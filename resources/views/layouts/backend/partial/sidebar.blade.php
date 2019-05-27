@@ -57,6 +57,67 @@
                     </a>
                 </li>
 
+            <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">assignment</i>
+                    <span>Gestion Taximonie</span>
+                </a>
+
+                <ul class="ml-menu">
+                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.espece.index') }}">Espèce</a>
+                    </li>
+                    <li>
+                        <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">assignment</i>
+                    <span>Taximonie</span>
+                </a>
+
+                <ul class="ml-menu">
+                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.espece.index') }}">Espèce</a>
+                    </li>
+                    <li>
+                        <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">assignment</i>
+                    <span>Taximonie</span>
+                </a>
+
+                <ul class="ml-menu">
+                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.espece.index') }}">Espèce</a>
+                    </li>
+                    <li>
+                        <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+
+
+                <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.espece.index') }}">
+                        <i class="material-icons">apps</i>
+                        <span>Espèce</span>
+                    </a>
+                </li>
+
 
 
 
@@ -77,16 +138,16 @@
             @endif
 
 
-            @if(Request::is('author*'))
-                <li class="{{ Request::is('author/dashboard') ? 'active' : '' }}">
-                    <a href="{{ route('author.dashboard') }}">
+            @if(Request::is('gestionnaire*'))
+                <li class="{{ Request::is('gestionnaire/dashboard') ? 'active' : '' }}">
+                    <a href="">
                         <i class="material-icons">dashboard</i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="{{ Request::is('author/post*') ? 'active' : '' }}">
-                    <a href="{{ route('author.post.index') }}">
+                <li class="{{ Request::is('gestionnaire/post*') ? 'active' : '' }}">
+                    <a href="">
                         <i class="material-icons">library_books</i>
                         <span>Posts</span>
                     </a>

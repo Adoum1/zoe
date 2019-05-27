@@ -27,6 +27,9 @@ Route::group(['as'=>'admin.','prefix'=> 'admin', 'namespace'=>'Admin','middlewar
     function (){
         Route::get('dashboard','DashboardController@index')->name('dashboard');
 
+        /** route espece */
+        Route::resource('espece', 'EspeceController');
+
     });
 
 /** End Route admin  */
