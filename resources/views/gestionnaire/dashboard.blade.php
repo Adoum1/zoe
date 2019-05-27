@@ -2,12 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: gomab
- * Date: 07/05/19
- * Time: 10:27
+ * Date: 2/22/19
+ * Time: 4:08 AM
  */
 ?>
+@extends('layouts.backend.app')
 
-@extends('layouts.app')
+@section('title', 'Dashboard')
+
+@push('css')
+
+
+@endpush
 
 @section('content')
     <div class="container">
@@ -23,11 +29,17 @@
                             </div>
                         @endif
 
-                        Vous êtes connecté comme {{ Auth::user()->nom }}
+                        You are logged in! as <strong>{{ Auth::user()->nom }}</strong>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+
+@push('js')
+
+
+@endpush
 
