@@ -22,7 +22,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} -  @yield('title')</title>
+    <title>{{ config('app.name', 'ZOE') }} -  @yield('title')</title>
 
 
     <!-- Favicon-->
@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </div>
-            <p>Please wait...</p>
+            <p>Chargement en cours...</p>
         </div>
     </div>
     <!-- #END# Page Loader -->

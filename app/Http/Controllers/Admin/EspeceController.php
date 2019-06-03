@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Espece;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
+use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 
 class EspeceController extends Controller
 {
@@ -39,7 +45,63 @@ class EspeceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request->all();
+
+        /**
+         * Validation champs
+         */
+
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'required',
+            //'body' => 'required',
+            'genre' => 'required',
+            'gender' => 'required',
+            'classification' => 'required',
+            'description' => 'required',
+        ]);
+
+        /**
+         * Setp up Image
+         */
+        $image = $request->file('image');
+        $slug = Str::slug($request->name);
+
+        if(isset($image)){
+            //make unique name for image
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+
+            if (!Storage::disk('public')->exists('espece')){
+                Storage::disk('public')->makeDirectory('espece');
+            }
+
+            $postImage = Image::make($image)->resize(1600, 1066)->save();
+            Storage::disk('public')->put('espece/'.$imageName, $postImage);
+        }else{
+            $imageName = "default.png";
+        }
+
+        /**
+         * Creation de l'espece
+         */
+        $espece = new Espece();
+        $espece->user_id = Auth::id();
+        $espece->name   = $request->name;
+        $espece->slug    = $slug;
+        $espece->image   = $imageName;
+        $espece->genre   = $request->genre;
+        $espece->gender  = $request->gender;
+        $espece->classification = $request->classification;
+        $espece->description = $request->description;
+
+
+        $espece->save();
+
+
+        Toastr::success('Espèce créé :)', 'Success');
+
+        return redirect()->route('admin.espece.index');
     }
 
     /**
@@ -48,9 +110,9 @@ class EspeceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Espece $espece)
     {
-        //
+        return view('admin.espece.show', compact('espece'));
     }
 
     /**
@@ -59,9 +121,9 @@ class EspeceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Espece $espece)
     {
-        //
+        return view('admin.espece.edit', compact('espece'));
     }
 
     /**
@@ -73,7 +135,68 @@ class EspeceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        /**
+         * Validation champs
+         */
+
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'required',
+            //'body' => 'required',
+            'genre' => 'required',
+            'gender' => 'required',
+            'classification' => 'required',
+            'description' => 'required',
+        ]);
+
+        /**
+         * Setp up Image
+         */
+        $image = $request->file('image');
+        $slug = Str::slug($request->name);
+
+        if(isset($image)){
+            //make unique name for image
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+
+            if (!Storage::disk('public')->exists('espece')){
+                Storage::disk('public')->makeDirectory('espece');
+            }
+
+
+            //Delete old post image
+            if(Storage::disk('public')->exists('espece/.$espece->image')){
+                Storage::disk('public')->delete('espece/'.$espece->image);
+            }
+
+
+            $postImage = Image::make($image)->resize(1600, 1066)->save();
+            Storage::disk('public')->put('espece/'.$imageName, $postImage);
+        }else{
+            $imageName = "default.png";
+        }
+
+        /**
+         * Madification de l'espece
+         */
+
+        $espece->user_id = Auth::id();
+        $espece->name   = $request->name;
+        $espece->slug    = $slug;
+        $espece->image   = $imageName;
+        $espece->genre   = $request->genre;
+        $espece->gender  = $request->gender;
+        $espece->classification = $request->classification;
+        $espece->description = $request->description;
+
+
+        $espece->save();
+
+
+        Toastr::success('Espèce MAJ :)', 'Success');
+
+        return redirect()->route('admin.espece.index');
     }
 
     /**
@@ -82,8 +205,17 @@ class EspeceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Espece $espece)
     {
-        //
+        if (Storage::disk('public')->exists('espece/'.$espece->image)){
+            Storage::disk('public')->delete('espece/'.$espece->image);
+        }
+
+
+        $espece->delete();
+
+        Toastr::success('espece supprimé !!', 'Success');
+
+        return redirect()->back();
     }
 }

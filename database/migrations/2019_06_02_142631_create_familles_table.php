@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEspecesTable extends Migration
+class CreateFamillesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,10 @@ class CreateEspecesTable extends Migration
      */
     public function up()
     {
-        Schema::create('especes', function (Blueprint $table) {
+        Schema::create('familles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('slug');
-            $table->string('image')->default('default.png');
-            $table->string('genre');
-            $table->string('gender');
-            $table->string('classification');
-            $table->date('birthday')->nullable();
-            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +28,6 @@ class CreateEspecesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('especes');
+        Schema::dropIfExists('familles');
     }
 }

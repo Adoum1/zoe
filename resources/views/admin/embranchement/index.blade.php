@@ -10,7 +10,7 @@
 
 @extends('layouts.backend.app')
 
-@section('title', 'Category')
+@section('title', 'Embranchement')
 
 @push('css')
 
@@ -28,21 +28,15 @@
                 <ol class="breadcrumb breadcrumb-bg-pink">
                     <li><a href="javascript:void(0);"><i class="material-icons">home</i> Acceuil</a></li>
                     <li class="active"><i class="material-icons">library_books</i> Gestion de la Taxinomie</li>
-                    <li class="active"><i class="material-icons">library_books</i> Espèce</li>
+                    <li class="active"><i class="material-icons">library_books</i> Embranchement</li>
                 </ol>
             </h2>
 
             <h2>
-                <a href="{{ route('admin.espece.create') }}" class="btn btn-primary">
-                   <i class="material-icons">add</i>
-                    <span>Ajouter une espèce</span>
-                </a>
-
-                <!--
-                <button type="button" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float">
+                <a href="{{ route('admin.embranchement.create') }}" class="btn btn-primary">
                     <i class="material-icons">add</i>
-                </button>
-                -->
+                    <span>Ajouter un embranchement</span>
+                </a>
 
             </h2>
         </div>
@@ -50,12 +44,11 @@
         <!-- Exportable Table -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
                 <div class="card">
                     <div class="header">
                         <h2>
-                          ESPECES
-                            <span class="badge bg-blue">{{ $especes->count() }}</span>
+                           Nombre Embranchement
+                            <span class="badge bg-blue">{{ $embranchements->count() }}</span>
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
@@ -77,11 +70,9 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nom</th>
-                                    <th>Règne</th>
-                                    <th>Genre</th>
-                                    <th>Classification</th>
-                                    <th>Date Naiasnce</th>
-                                    <th>Image</th>
+                                    <th>Nbre Posts</th>
+                                    <th>Date de création</th>
+                                    <th>Date de MAJ</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -89,52 +80,42 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nom</th>
-                                    <th>Règne</th>
-                                    <th>Genre</th>
-                                    <th>Classification</th>
-                                    <th>Date Naiasnce</th>
-                                    <th>Image</th>
+                                    <th>Nbre Posts</th>
+                                    <th>Date de création</th>
+                                    <th>Date de MAJ</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                    @foreach($especes as $key=>$espece)
+                                    @foreach($embranchements as $key=>$embranchement)
 
-                                        <tr>
-                                            <td>{{ $key + 1  }}</td>
-                                            <td>{{ $espece->name }}</td>
-                                            <td>{{ $espece->genre }}</td>
-                                            <td>{{ $espece->gender }}</td>
-                                            <td>{{ $espece->classification }}</td>
-                                            <td>xx</td>
-                                            <td>xx</td>
-                                            <td class="text-center">
+                                       <tr>
+                                           <td>{{ $key + 1 }}</td>
+                                           <td>{{ $embranchement->name }}</td>
+                                           <td><span class="badge bg-primary">8</span></td>
+                                           <td>{{ $embranchement->created_at }}</td>
+                                           <td>{{ $embranchement->updated_at }}</td>
+                                           <td class="text-center">
+                                               <a href="{{ route('admin.embranchement.edit', $embranchement->id) }}" class="btn btn-info waves-effect">
+                                                   <i class="material-icons">edit</i>
+                                               </a>
 
-                                                <a href="{{ route('admin.espece.show', $espece->id) }}" class="btn btn-info waves-effect">
-                                                    <i class="material-icons">visibility</i>
-                                                </a>
+                                               <button class="btn btn-danger waves-effect" type="button" onclick="deleteEmbranchement({{ $embranchement->id }})">
+                                                   <i class="material-icons">delete</i>
 
-                                                <a href="{{ route('admin.espece.edit', $espece->id) }}" class="btn btn-info waves-effect">
-                                                    <i class="material-icons">edit</i>
-                                                </a>
+                                               </button>
 
-                                                <button class="btn btn-danger waves-effect" type="button" onclick="deleteEspece({{ $espece->id }})">
-                                                    <i class="material-icons">delete</i>
+                                               <form id="delete-form-{{ $embranchement->id }}" action="{{ route('admin.embranchement.destroy',$embranchement->id) }}" method="POST" style="display: none;">
+                                                   @csrf
+                                                   @method('DELETE')
 
-                                                </button>
+                                               </form>
 
-                                                <form id="delete-form-{{ $espece->id }}" action="{{ route('admin.espece.destroy',$espece->id) }}" method="POST" style="display: none;">
-                                                    @csrf
-                                                    @method('DELETE')
+                                           </td>
 
-                                                </form>
-
-                                            </td>
-
-                                        </tr>
-
-
-                                    @endforeach
+                                       </tr>
+                                        
+                                   @endforeach     
                                 </tbody>
                             </table>
                         </div>
@@ -167,7 +148,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.7.0/dist/sweetalert2.all.min.js"></script>
 
     <script type="text/javascript">
-        function deleteEspece(id) {
+        function deleteEmbranchement(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success',
@@ -177,16 +158,16 @@
             })
 
             swalWithBootstrapButtons.fire({
-                title: 'Etes vous sur?',
-                text: "Voulez-vous vraiment supprimer cet espèce",
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Oui, supprimer',
-                cancelButtonText: 'Non, annuler!',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
-                    // event.preventDefault();
+                   // event.preventDefault();
                     document.getElementById('delete-form-'+id).submit();
                 } else if (
                     // Read more about handling dismissals

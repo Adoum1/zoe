@@ -30,6 +30,21 @@ Route::group(['as'=>'admin.','prefix'=> 'admin', 'namespace'=>'Admin','middlewar
         /** route espece */
         Route::resource('espece', 'EspeceController');
 
+        /** route Famille */
+        Route::resource('famille', 'FamilleController');
+
+        /** route embranchement */
+        Route::resource('embranchement', 'EmbranchementController');
+
+        /** route Genre */
+        Route::resource('genre', 'GenreController');
+
+        /** route Ordre */
+        Route::resource('ordre', 'OrdreController');
+
+        /** route 'Classe */
+        Route::resource('classe', 'ClasseController');
+
     });
 
 /** End Route admin  */

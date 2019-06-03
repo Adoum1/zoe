@@ -27,8 +27,7 @@
             <ol class="breadcrumb breadcrumb-bg-pink">
                 <li><a href="javascript:void(0);"><i class="material-icons">home</i> Acceuil</a></li>
                 <li class="active"><i class="material-icons">library_books</i> Gestion de la Taxinomie</li>
-                <li class="active"><i class="material-icons">library_books</i> Espèce</li>
-                <li class="active"><i class="material-icons">library_books</i> Ajouter une espèce</li>
+                <li class="active"><i class="material-icons">library_books</i> Famille</li>
 
             </ol>
         </h2>
@@ -46,7 +45,7 @@
                                     <b>Nom de l'espèce</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="name" name="title" class="form-control">
+                                    <input type="text" id="name" name="name" class="form-control">
                                     <label class="form-label">Nom de l'espèce</label>
                                 </div>
                             </div>
@@ -63,7 +62,7 @@
                                 <p>
                                     <b>Description</b>
                                 </p>
-                                <textarea name="body" id="tinymce" cols="30" rows="10"></textarea>
+                                <textarea name="description" id="tinymce" cols="30" rows="10"></textarea>
                             </div>
 
                         </div>
@@ -80,9 +79,9 @@
                                 <p>
                                     <b>Règne</b>
                                 </p>
-                                <select class="form-control show-tick">
-                                    <option>Animal</option>
-                                    <option>Végétal</option>
+                                <select class="form-control show-tick" name="genre" id="genre">
+                                    <option value="animal">Animal</option>
+                                    <option value="vegetal">Végétal</option>
                                 </select>
                             </div>
 
@@ -91,10 +90,10 @@
                                 <p>
                                     <b>Genre</b>
                                 </p>
-                                <input type="radio" name="gender" id="male" class="with-gap">
+                                <input type="radio" name="gender" id="male" value="male" class="with-gap">
                                 <label for="male">Male</label>
 
-                                <input type="radio" name="gender" id="female" class="with-gap">
+                                <input type="radio" name="gender" id="female" value="femelle" class="with-gap">
                                 <label for="female" class="m-l-20">Female</label>
                             </div>
 
@@ -103,10 +102,12 @@
                                 <p>
                                     <b>Classification</b>
                                 </p>
-                                <select class="form-control show-tick" data-live-search="true">
-                                    <option>Hot Dog, Fries and a Soda</option>
-                                    <option>Burger, Shake and a Smile</option>
-                                    <option>Sugar, Spice and all things nice</option>
+                                <select class="form-control show-tick" name="classification" id="classification" data-live-search="true">
+                                    <option value="Mammifère">Mammifère</option>
+                                    <option value="Oiseau">Oiseau</option>
+                                    <option value="Poisson">Poisson</option>
+                                    <option value="Amphibien">Amphibien</option>
+                                    <option value="Reptile">Reptile</option>
                                 </select>
                             </div>
 
