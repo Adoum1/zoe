@@ -111,6 +111,9 @@ class OrdreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ordre::find($id)->delete();
+        Toastr::success('Ordre successfully Deleted', 'Suppression Tag');
+
+        return redirect()->back();
     }
 }

@@ -18,7 +18,7 @@ class ClasseController extends Controller
     public function index()
     {
         $classes = Classe::latest()->get();
-        return view('admin.ordre.index', compact('classes'));
+        return view('admin.classe.index', compact('classes'));
     }
 
     /**
@@ -87,7 +87,20 @@ class ClasseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+
+        //return $request
+
+        $classe= Classe::find($id);
+        $classe->name = $request->name;
+        $classe-> slug = Str::slug($request->name);
+        $classe->save();
+
+        Toastr::success('Classe modifiée.', 'Success');
+
+        return redirect()->route('admin.classe.index');
     }
 
     /**
@@ -98,6 +111,9 @@ class ClasseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Classe::find($id)->delete();
+        Toastr::success('Classe successfully Deleted', 'Suppression Classe');
+
+        return redirect()->back();
     }
 }

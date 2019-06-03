@@ -10,7 +10,7 @@
 
 @extends('layouts.backend.app')
 
-@section('title', 'Genre')
+@section('title', 'Ordre')
 
 @push('css')
 
@@ -28,14 +28,14 @@
                 <ol class="breadcrumb breadcrumb-bg-pink">
                     <li><a href="javascript:void(0);"><i class="material-icons">home</i> Acceuil</a></li>
                     <li class="active"><i class="material-icons">library_books</i> Gestion de la Taxinomie</li>
-                    <li class="active"><i class="material-icons">library_books</i> Genre</li>
+                    <li class="active"><i class="material-icons">library_books</i> Ordre</li>
                 </ol>
             </h2>
 
             <h2>
-                <a href="{{ route('admin.genre.create') }}" class="btn btn-primary">
+                <a href="{{ route('admin.ordre.create') }}" class="btn btn-primary">
                     <i class="material-icons">add</i>
-                    <span>Ajouter une genre d'espèce</span>
+                    <span>Ajouter une ordre d'espèce</span>
                 </a>
 
             </h2>
@@ -47,8 +47,8 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                           Nombre Genre
-                            <span class="badge bg-blue">{{ $genres->count() }}</span>
+                           Nombre Ordre
+                            <span class="badge bg-blue">{{ $ordres->count() }}</span>
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
@@ -87,25 +87,25 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                    @foreach($genres as $key=>$genre)
+                                    @foreach($ordres as $key=>$ordre)
 
                                        <tr>
                                            <td>{{ $key + 1 }}</td>
-                                           <td>{{ $genre->name }}</td>
+                                           <td>{{ $ordre->name }}</td>
                                            <td><span class="badge bg-primary">8</span></td>
-                                           <td>{{ $genre->created_at }}</td>
-                                           <td>{{ $genre->updated_at }}</td>
+                                           <td>{{ $ordre->created_at }}</td>
+                                           <td>{{ $ordre->updated_at }}</td>
                                            <td class="text-center">
-                                               <a href="{{ route('admin.genre.edit', $genre->id) }}" class="btn btn-info waves-effect">
+                                               <a href="{{ route('admin.ordre.edit', $ordre->id) }}" class="btn btn-info waves-effect">
                                                    <i class="material-icons">edit</i>
                                                </a>
 
-                                               <button class="btn btn-danger waves-effect" type="button" onclick="deleteGenre({{ $genre->id }})">
+                                               <button class="btn btn-danger waves-effect" type="button" onclick="deleteOrdre({{ $ordre->id }})">
                                                    <i class="material-icons">delete</i>
 
                                                </button>
 
-                                               <form id="delete-form-{{ $genre->id }}" action="{{ route('admin.genre.destroy',$genre->id) }}" method="POST" style="display: none;">
+                                               <form id="delete-form-{{ $ordre->id }}" action="{{ route('admin.ordre.destroy',$ordre->id) }}" method="POST" style="display: none;">
                                                    @csrf
                                                    @method('DELETE')
 
@@ -148,7 +148,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.7.0/dist/sweetalert2.all.min.js"></script>
 
     <script type="text/javascript">
-        function deleteGenre(id) {
+        function deleteOrdre(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success',

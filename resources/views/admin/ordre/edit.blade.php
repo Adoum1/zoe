@@ -10,7 +10,7 @@
 
 @extends('layouts.backend.app')
 
-@section('title', 'Genre')
+@section('title', 'Ordre')
 
 @push('css')
 
@@ -25,7 +25,7 @@
             <ol class="breadcrumb breadcrumb-bg-pink">
                 <li><a href="javascript:void(0);"><i class="material-icons">home</i> Acceuil</a></li>
                 <li class="active"><i class="material-icons">library_books</i> Gestion de la Taxinomie</li>
-                <li class="active"><i class="material-icons">library_books</i> Genre</li>
+                <li class="active"><i class="material-icons">library_books</i> GOrdre</li>
 
             </ol>
         </h2>
@@ -36,23 +36,23 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        Modifier Genre
+                        Modifier Ordre
                     </h2>
                 </div>
                 <div class="body">
-                    <form action="{{ route('admin.genre.update', $genre->id) }}" method="POST">
+                    <form action="{{ route('admin.ordre.update', $ordre->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" id="name" name="name" class="form-control" value="{{ $genre->name }}">
-                                <label class="form-label">Nom de la genre</label>
+                                <input type="text" id="name" name="name" class="form-control" value="{{ $ordre->name }}">
+                                <label class="form-label">Nom de l'ordre</label>
                             </div>
                         </div>
 
-                        <br>
+                        <br>ordre
 
-                        <a href="{{ route('admin.genre.index') }}" class="btn btn-danger m-t-15 waves-effect">Retour</a>
+                        <a href="{{ route('admin.ordre.index') }}" class="btn btn-danger m-t-15 waves-effect">Retour</a>
 
                         <button type="submit" class="btn btn-primary m-t-15 waves-effect">Enregistrer</button>
                     </form>
