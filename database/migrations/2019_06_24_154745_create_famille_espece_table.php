@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaxinomiesTable extends Migration
+class CreateFamilleEspeceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateTaxinomiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('taxinomies', function (Blueprint $table) {
+        Schema::create('famille_espece', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('espece_id');
+            $table->integer('famille_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateTaxinomiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taxinomies');
+        Schema::dropIfExists('famille_espece');
     }
 }

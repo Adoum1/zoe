@@ -10,7 +10,7 @@
 
 @extends('layouts.backend.app')
 
-@section('title', 'Category')
+@section('title', 'Espèce')
 
 @push('css')
 
@@ -76,24 +76,22 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nom</th>
-                                    <th>Règne</th>
-                                    <th>Genre</th>
-                                    <th>Classification</th>
-                                    <th>Date Naiasnce</th>
-                                    <th>Image</th>
+                                    <th>Espèce</th>
+                                    <th>Autheur</th>
+                                    <th>Statut</th>
+                                    <th>Date de création</th>
+                                    <th>Date de MAJ</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nom</th>
-                                    <th>Règne</th>
-                                    <th>Genre</th>
-                                    <th>Classification</th>
-                                    <th>Date Naiasnce</th>
-                                    <th>Image</th>
+                                    <th>Espèce</th>
+                                    <th>Autheur</th>
+                                    <th>Statut</th>
+                                    <th>Date de création</th>
+                                    <th>Date de MAJ</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
@@ -102,12 +100,11 @@
 
                                         <tr>
                                             <td>{{ $key + 1  }}</td>
-                                            <td>{{ $espece->name }}</td>
-                                            <td>{{ $espece->genre }}</td>
-                                            <td>{{ $espece->gender }}</td>
-                                            <td>{{ $espece->classification }}</td>
-                                            <td>xx</td>
-                                            <td>xx</td>
+                                            <td>{{ Str::limit($espece->name, '50') }}</td>
+                                            <td>{{ $espece->user->prenom }} {{ $espece->user->nom }}</td>
+                                            <td>  <span class="badge bg-red">Espèce en danger</span></td>
+                                            <td>{{ $espece->created_at }}</td>
+                                            <td>{{ $espece->updated_at }}</td>
                                             <td class="text-center">
 
                                                 <a href="{{ route('admin.espece.show', $espece->id) }}" class="btn btn-info waves-effect">

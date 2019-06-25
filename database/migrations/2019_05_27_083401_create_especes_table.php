@@ -19,11 +19,13 @@ class CreateEspecesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('image')->default('default.png');
-            $table->string('genre');
-            $table->string('gender');
-            $table->string('classification');
-            $table->date('birthday')->nullable();
+            $table->string('regne');
+            $table->integer('statut')->default('3');
             $table->text('description')->nullable();
+            $table->foreign('user_id')
+                  ->references('id')->on('users');
+
+
             $table->timestamps();
         });
     }

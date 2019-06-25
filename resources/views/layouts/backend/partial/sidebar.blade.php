@@ -59,8 +59,51 @@
 
             <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">assignment</i>
+                    <i class="material-icons">ac_unit</i>
                     <span>Gestion de la Taximonie</span>
+                </a>
+
+                <ul class="ml-menu">
+                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.espece.index') }}">Espèce</a>
+                    </li>
+
+
+                    <li class="{{ Request::is('admin/embranchement*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.embranchement.index') }}">Embranchement</a>
+                    </li>
+
+                    <li class="{{ Request::is('admin/classe*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.classe.index') }}">Classe</a>
+                    </li>
+
+                    <li class="{{ Request::is('admin/ordre*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.ordre.index') }}">Ordre</a>
+                    </li>
+
+
+                    <li class="{{ Request::is('admin/famille*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.famille.index') }}">Famille</a>
+                    </li>
+
+
+
+                    <li class="{{ Request::is('admin/genre*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.genre.index') }}">Genre</a>
+                    </li>
+
+
+
+
+
+                </ul>
+            </li>
+
+
+            <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">domain</i>
+                    <span>Gestion des sites de stockage</span>
                 </a>
 
                 <ul class="ml-menu">
@@ -68,30 +111,6 @@
                         <a href="{{ route('admin.famille.index') }}">Famille</a>
                     </li>
 
-                    <li class="{{ Request::is('admin/embranchement*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.embranchement.index') }}">Embranchement</a>
-                    </li>
-
-                    <li class="{{ Request::is('admin/genre*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.genre.index') }}">Genre</a>
-                    </li>
-
-                    <li class="{{ Request::is('admin/ordre*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.ordre.index') }}">Ordre</a>
-                    </li>
-
-                    <li class="{{ Request::is('admin/classe*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.classe.index') }}">Classe</a>
-                    </li>
-
-
-                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Espèce</a>
-                    </li>
-
-                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Rattacher un espèce à une branche de classification</a>
-                    </li>
 
                     <li>
                         <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>

@@ -79,13 +79,13 @@
                                 <p>
                                     <b>Règne</b>
                                 </p>
-                                <select class="form-control show-tick" name="genre" id="genre">
+                                <select class="form-control show-tick" name="regne" id="regne">
                                     <option value="animal">Animal</option>
                                     <option value="vegetal">Végétal</option>
                                 </select>
                             </div>
 
-                            <!-- Genre de l'espèce -->
+                            <!-- Genre de l'espèce
                             <div class="form-group">
                                 <p>
                                     <b>Genre</b>
@@ -95,9 +95,9 @@
 
                                 <input type="radio" name="gender" id="female" value="femelle" class="with-gap">
                                 <label for="female" class="m-l-20">Female</label>
-                            </div>
+                            </div>-->
 
-                            <!-- Classification de l'espèce -->
+                            <!-- Classification de l'espèce
                             <div class="form-group">
                                 <p>
                                     <b>Classification</b>
@@ -109,14 +109,109 @@
                                     <option value="Amphibien">Amphibien</option>
                                     <option value="Reptile">Reptile</option>
                                 </select>
+                            </div>-->
+
+
+
+                            <!--Embranchenement -->
+
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('embranchements') ? 'focused error' : '' }}">
+                                    <label for="embranchement">Embranchements</label>
+                                    <select name="embranchements[]" id="classe" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($embranchements as $embranchement)
+                                            <option value="{{ $embranchement->id }}">{{ $embranchement->name }}</option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <!--end Embranchenement -->
+
+
+                            <!--Classe -->
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('classes') ? 'focused error' : '' }}">
+                                    <label for="classe">Classes</label>
+                                    <select name="classes[]" id="classe" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($classes as $classe)
+                                            <option value="{{ $classe->id }}">{{ $classe->name }}</option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 
-                            <!-- Date de naissance de l'espèce -->
+                            <!--end Classe -->
+
+                            <!--Ordre -->
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('ordres') ? 'focused error' : '' }}">
+                                    <label for="ordre">Ordres</label>
+                                    <select name="ordres[]" id="ordre" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($ordres as $ordre)
+                                            <option value="{{ $ordre->id }}">{{ $ordre->name }}</option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--end ordre-->
+
+                            <!--Famille -->
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('familles') ? 'focused error' : '' }}">
+                                    <label for="famille">Familles</label>
+                                    <select name="familles[]" id="famille" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($familles as $famille)
+                                            <option value="{{ $famille->id }}">{{ $famille->name }}</option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--end Famille -->
+
+                            <!--Genre-->
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('genres') ? 'focused error' : '' }}">
+                                    <label for="genre">Genres</label>
+                                    <select name="genres[]" id="genre" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($genres as $genre)
+                                            <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <label for="status">Statut</label>
+                                    <select class="form-control show-tick">
+                                        <option value="">-- Sélectionner le statut --</option>
+                                        <option value="1">Vert</option>
+                                        <option value="2">Orange</option>
+                                        <option value="3">Rouge</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--end Genre -->
+
+
+
+
+
+                            <!-- Date de naissance de l'espèce
                             <div class="form-group">
                                 <div class="form-line">
                                     <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
                                 </div>
-                            </div>
+                            </div>-->
 
                             <br>
 

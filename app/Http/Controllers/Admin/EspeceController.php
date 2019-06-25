@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Classe;
+use App\Embranchement;
 use App\Espece;
+use App\Famille;
+use App\Genre;
+use App\Ordre;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +39,13 @@ class EspeceController extends Controller
      */
     public function create()
     {
-        return view('admin.espece.create');
+        $classes = Classe::all();
+        $embranchements = Embranchement::all();
+        $familles = Famille::all();
+        $genres = Genre::all();
+        $ordres = Ordre::all();
+
+        return view('admin.espece.create', compact('classes', 'familles', 'embranchements', 'genres', 'ordres'));
     }
 
     /**
@@ -51,13 +62,14 @@ class EspeceController extends Controller
          * Validation champs
          */
 
-        $this->validate($request, [
+       $this->validate($request, [
             'name' => 'required',
-            'image' => 'required',
-            //'body' => 'required',
-            'genre' => 'required',
-            'gender' => 'required',
-            'classification' => 'required',
+          //  'image' => 'required',
+            'classes' => 'required',
+            'embranchements' => 'required',
+            'familles' => 'required',
+            'genres' => 'required',
+            'ordres' => 'required',
             'description' => 'required',
         ]);
 
@@ -76,8 +88,8 @@ class EspeceController extends Controller
                 Storage::disk('public')->makeDirectory('espece');
             }
 
-            $postImage = Image::make($image)->resize(1600, 1066)->save();
-            Storage::disk('public')->put('espece/'.$imageName, $postImage);
+            $especeImage = Image::make($image)->resize(1600, 1066)->save();
+            Storage::disk('public')->put('espece/'.$imageName, $especeImage);
         }else{
             $imageName = "default.png";
         }
@@ -90,13 +102,22 @@ class EspeceController extends Controller
         $espece->name   = $request->name;
         $espece->slug    = $slug;
         $espece->image   = $imageName;
-        $espece->genre   = $request->genre;
-        $espece->gender  = $request->gender;
-        $espece->classification = $request->classification;
+        $espece->regne   = $request->regne;
         $espece->description = $request->description;
+
+       /* if (isset($request->status)){
+            $espece->status = true;
+        }else{
+            $espece->status = false;
+        }**/
 
 
         $espece->save();
+        $espece->embranchements()->attach($request->embranchements);
+        $espece->classes()->attach($request->classes);
+        $espece->ordres()->attach($request->ordres);
+        $espece->familles()->attach($request->familles);
+        $espece->genres()->attach($request->genres);
 
 
         Toastr::success('Espèce créé :)', 'Success');
@@ -123,7 +144,13 @@ class EspeceController extends Controller
      */
     public function edit(Espece $espece)
     {
-        return view('admin.espece.edit', compact('espece'));
+        $classes = Classe::all();
+        $embranchements = Embranchement::all();
+        $familles = Famille::all();
+        $genres = Genre::all();
+        $ordres = Ordre::all();
+
+        return view('admin.espece.edit', compact('espece', 'classes', 'embranchements', 'familles', 'ordres', 'genres'));
     }
 
     /**
@@ -133,7 +160,7 @@ class EspeceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Espece $espece)
     {
         /**
          * Validation champs
@@ -141,11 +168,13 @@ class EspeceController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'required',
-            //'body' => 'required',
-            'genre' => 'required',
-            'gender' => 'required',
-            'classification' => 'required',
+            'classes' => 'required',
+            'embranchements' => 'required',
+            'image' => 'image',
+            'familles' => 'required',
+            'genres' => 'required',
+            'regne' => 'required',
+            'ordres' => 'required',
             'description' => 'required',
         ]);
 
@@ -165,16 +194,16 @@ class EspeceController extends Controller
             }
 
 
-            //Delete old post image
+            //Delete old espece image
             if(Storage::disk('public')->exists('espece/.$espece->image')){
                 Storage::disk('public')->delete('espece/'.$espece->image);
             }
 
 
-            $postImage = Image::make($image)->resize(1600, 1066)->save();
-            Storage::disk('public')->put('espece/'.$imageName, $postImage);
+            $especeImage = Image::make($image)->resize(1600, 1066)->save();
+            Storage::disk('public')->put('espece/'.$imageName, $especeImage);
         }else{
-            $imageName = "default.png";
+            $imageName = $espece->image;
         }
 
         /**
@@ -185,13 +214,21 @@ class EspeceController extends Controller
         $espece->name   = $request->name;
         $espece->slug    = $slug;
         $espece->image   = $imageName;
-        $espece->genre   = $request->genre;
-        $espece->gender  = $request->gender;
-        $espece->classification = $request->classification;
+        $espece->regne   = $request->regne;
         $espece->description = $request->description;
 
+        /**if (isset($request->status)){
+            $espece->status = true;
+        }else{
+            $espece->status = false;
+        }*/
 
         $espece->save();
+        $espece->embranchements()->sync($request->embranchements);
+        $espece->classes()->sync($request->classes);
+        $espece->ordres()->sync($request->ordres);
+        $espece->familles()->sync($request->familles);
+        $espece->genres()->sync($request->genres);
 
 
         Toastr::success('Espèce MAJ :)', 'Success');
@@ -211,7 +248,11 @@ class EspeceController extends Controller
             Storage::disk('public')->delete('espece/'.$espece->image);
         }
 
-
+        $espece->embranchements()->detach();
+        $espece->classes()->detach();
+        $espece->ordres()->detach();
+        $espece->familles()->detach();
+        $espece->genres()->detach();
         $espece->delete();
 
         Toastr::success('espece supprimé !!', 'Success');

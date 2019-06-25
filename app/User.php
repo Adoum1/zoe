@@ -47,6 +47,15 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
+    //Bind Post model
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function especes(){
+        return $this->hasMany('App\Espece');
+    }
+
 
     //Bind Site model
 

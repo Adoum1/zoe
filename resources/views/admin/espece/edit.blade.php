@@ -10,7 +10,7 @@
 
 @extends('layouts.backend.app')
 
-@section('title', 'espece')
+@section('title', 'Espece-edit')
 
 @push('css')
     <!-- Bootstrap Select Css -->
@@ -33,8 +33,9 @@
             </ol>
         </h2>
         <!-- Vertical Layout | With Floating Label -->
-        <form action="{{ route('admin.espece.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.espece.update', $espece->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="row clearfix">
                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -80,50 +81,123 @@
                                 <p>
                                     <b>Règne</b>
                                 </p>
-                                <select class="form-control show-tick" name="genre" id="genre">
+                                <select class="form-control show-tick" name="regne" id="regne">
                                     <option value="animal">Animal</option>
                                     <option value="vegetal">Végétal</option>
                                 </select>
                             </div>
 
-                            <!-- Genre de l'espèce -->
-                            <div class="form-group">
-                                <p>
-                                    <b>Genre</b>
-                                </p>
-                                <input type="radio" name="gender" id="male" value="male" class="with-gap">
-                                <label for="male">Male</label>
+                            <!--Embranchenement -->
 
-                                <input type="radio" name="gender" id="female" value="femelle" class="with-gap">
-                                <label for="female" class="m-l-20">Female</label>
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('embranchements') ? 'focused error' : '' }}">
+                                    <label for="embranchement">Embranchements</label>
+                                    <select name="embranchements[]" id="classe" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($embranchements as $embranchement)
+                                            <option
+                                                    @foreach($espece->embranchements as $especeEmbranchement)
+                                                            {{ $especeEmbranchement->id == $embranchement->id ? 'selected' : '' }}
+                                                    @endforeach
+
+                                                    value="{{ $embranchement->id }}">{{ $embranchement->name }}
+                                            </option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
+                            <!--end Embranchenement -->
 
-                            <!-- Classification de l'espèce -->
-                            <div class="form-group">
-                                <p>
-                                    <b>Classification</b>
-                                </p>
-                                <select class="form-control show-tick" name="classification" id="classification" data-live-search="true">
-                                    <option value="Mammifère">Mammifère</option>
-                                    <option value="Oiseau">Oiseau</option>
-                                    <option value="Poisson">Poisson</option>
-                                    <option value="Amphibien">Amphibien</option>
-                                    <option value="Reptile">Reptile</option>
-                                </select>
-                            </div>
 
-                            <!-- Date de naissance de l'espèce -->
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
+                            <!--Classe -->
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('classes') ? 'focused error' : '' }}">
+                                    <label for="classe">Classes</label>
+                                    <select name="classes[]" id="classe" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($classes as $classe)
+                                            <option
+                                                    @foreach($espece->classes as $especeClasse)
+                                                    {{ $especeClasse->id == $classe->id ? 'selected' : '' }}
+                                                    @endforeach
+
+                                                    value="{{ $classe->id }}">{{ $classe->name }}
+                                            </option>
+
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
+                            <!--end Classe -->
+
+                            <!--Ordre -->
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('ordres') ? 'focused error' : '' }}">
+                                    <label for="ordre">Ordres</label>
+                                    <select name="ordres[]" id="ordre" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($ordres as $ordre)
+                                            <option
+                                                    @foreach($espece->ordres as $especeOrdre)
+                                                    {{ $especeOrdre->id == $ordre->id ? 'selected' : '' }}
+                                                    @endforeach
+
+                                                    value="{{ $ordre->id }}">{{ $ordre->name }}
+                                            </option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--end ordre-->
+
+                            <!--Famille -->
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('familles') ? 'focused error' : '' }}">
+                                    <label for="famille">Familles</label>
+                                    <select name="familles[]" id="famille" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($familles as $famille)
+                                            <option
+                                                    @foreach($espece->familles as $especeFamille)
+                                                    {{ $especeFamille->id == $famille->id ? 'selected' : '' }}
+                                                    @endforeach
+
+                                                    value="{{ $famille->id }}">{{ $famille->name }}
+
+                                            </option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--end Famille -->
+
+                            <!--Genre-->
+                            <div class="form-group form-float">
+                                <div class="form-line {{ $errors->has('genres') ? 'focused error' : '' }}">
+                                    <label for="genre">Genres</label>
+                                    <select name="genres[]" id="genre" class="form-control show-tick" data-live-search="true" multiple>
+                                        @foreach($genres as $genre)
+                                            <option
+                                                    @foreach($espece->genres as $especeGenre)
+                                                    {{ $especeGenre->id == $genre->id ? 'selected' : '' }}
+                                                    @endforeach
+
+                                                    value="{{ $genre->id }}">{{ $genre->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--end Genre -->
+
                             <br>
 
-                            <a href="{{ route('admin.espece.index') }}" class="btn btn-danger m-t-15 waves-effect">Retour</a>
+                            <a href="{{ route('admin.espece.index') }}" class="btn btn-danger m-t-15 waves-effect"><i class="material-icons">arrow_back</i>Retour</a>
 
-                            <button type="submit" class="btn btn-primary m-t-15 waves-effect">Enregistrer</button>
+                            <button type="submit" class="btn btn-primary m-t-15 waves-effect"><i class="material-icons">save</i>Enregistrer</button>
 
                         </div>
                     </div>
