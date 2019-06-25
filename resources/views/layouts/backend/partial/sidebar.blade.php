@@ -53,7 +53,7 @@
                 <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}">
                         <i class="material-icons">dashboard</i>
-                        <span>Dashboard</span>
+                        <span>Tableau de bord</span>
                     </a>
                 </li>
 
@@ -108,12 +108,12 @@
 
                 <ul class="ml-menu">
                     <li class="{{ Request::is('admin/famille*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.famille.index') }}">Famille</a>
+                        <a href="{{ route('admin.site.index') }}">Sites</a>
                     </li>
 
 
                     <li>
-                        <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                        <a href="pages/forms/advanced-form-elements.html">Structures de stockage</a>
                     </li>
                 </ul>
             </li>

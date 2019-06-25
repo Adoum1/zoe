@@ -10,7 +10,7 @@
 
 @extends('layouts.backend.app')
 
-@section('title', 'Tag')
+@section('title', 'Site de stocakge')
 
 @push('css')
 
@@ -23,10 +23,19 @@
 
     <div class="container-fluid">
         <div class="block-header">
+
             <h2>
-                <a href="{{ route('admin.tag.create') }}" class="btn btn-primary">
+                <ol class="breadcrumb breadcrumb-bg-pink">
+                    <li><a href="javascript:void(0);"><i class="material-icons">home</i> Acceuil</a></li>
+                    <li class="active"><i class="material-icons">library_books</i> Gestion des sites de stockage</li>
+                    <li class="active"><i class="material-icons">library_books</i> Sites</li>
+                </ol>
+            </h2>
+
+            <h2>
+                <a href="{{ route('admin.site.create') }}" class="btn btn-primary">
                     <i class="material-icons">add</i>
-                    <span>Add new Tag</span>
+                    <span>Ajouter un site de stockage</span>
                 </a>
 
             </h2>
@@ -38,8 +47,8 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                           ALL TAGS
-                            <span class="badge bg-blue">{{ $tags->count() }}</span>
+                           Nombre de site
+                            <span class="badge bg-blue">{{ $sites->count() }}</span>
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
@@ -61,9 +70,10 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nom</th>
-                                    <th>Nbre Posts</th>
-                                    <th>Date de création</th>
-                                    <th>Date de MAJ</th>
+                                    <th>Adresse</th>
+                                    <th>Code Postal</th>
+                                    <th>Commune</th>
+                                    <th>Pays</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -71,42 +81,51 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nom</th>
-                                    <th>Nbre Posts</th>
-                                    <th>Date de création</th>
-                                    <th>Date de MAJ</th>
+                                    <th>Adresse</th>
+                                    <th>Code Postal</th>
+                                    <th>Commune</th>
+                                    <th>Pays</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                    @foreach($tags as $key=>$tag)
+                                    @foreach($sites as $key=>$site)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $site->nom }}</td>
+                                            <td>{!! $site->rue  !!}</td>
+                                            <td>{{ $site->cp }}</td>
+                                            <td>{{ $site->commune }}</td>
+                                            <td>{{ $site->pays }}</td>
 
-                                       <tr>
-                                           <td>{{ $key + 1 }}</td>
-                                           <td>{{ $tag->name }}</td>
-                                           <td><span class="badge bg-primary">{{ $tag->posts->count() }}</span></td>
-                                           <td>{{ $tag->created_at }}</td>
-                                           <td>{{ $tag->updated_at }}</td>
-                                           <td class="text-center">
-                                               <a href="{{ route('admin.tag.edit', $tag->id) }}" class="btn btn-info waves-effect">
-                                                   <i class="material-icons">edit</i>
-                                               </a>
+                                            <td class="text-center">
+                                                <a href="{{ route('admin.site.edit', $site->id) }}" class="btn btn-info waves-effect">
+                                                    <i class="material-icons">edit</i>
+                                                </a>
 
-                                               <button class="btn btn-danger waves-effect" type="button" onclick="deleteTag({{ $tag->id }})">
-                                                   <i class="material-icons">delete</i>
+                                                <button class="btn btn-danger waves-effect" type="button" onclick="deleteSite({{ $site->id }})">
+                                                    <i class="material-icons">delete</i>
 
-                                               </button>
+                                                </button>
 
-                                               <form id="delete-form-{{ $tag->id }}" action="{{ route('admin.tag.destroy',$tag->id) }}" method="POST" style="display: none;">
-                                                   @csrf
-                                                   @method('DELETE')
+                                                <form id="delete-form-{{ $site->id }}" action="{{ route('admin.site.destroy',$site->id) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                               </form>
+                                                </form>
 
-                                           </td>
+                                            </td>
+                                        </tr>
 
-                                       </tr>
-                                        
-                                   @endforeach     
+
+
+
+
+                                    @endforeach
+
+
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -139,7 +158,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.7.0/dist/sweetalert2.all.min.js"></script>
 
     <script type="text/javascript">
-        function deleteTag(id) {
+        function deleteSite(id) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success',

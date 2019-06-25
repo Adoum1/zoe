@@ -45,6 +45,9 @@ Route::group(['as'=>'admin.','prefix'=> 'admin', 'namespace'=>'Admin','middlewar
         /** route 'Classe */
         Route::resource('classe', 'ClasseController');
 
+        /** route sites de stockage */
+        Route::resource('site', 'SiteController');
+
     });
 
 /** End Route admin  */
