@@ -107,13 +107,13 @@
                 </a>
 
                 <ul class="ml-menu">
-                    <li class="{{ Request::is('admin/famille*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.site.index') }}">Sites</a>
+                    <li class="{{ Request::is('admin/site*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.site.index') }}">Sites de stockage</a>
                     </li>
 
 
-                    <li>
-                        <a href="pages/forms/advanced-form-elements.html">Structures de stockage</a>
+                    <li class="{{ Request::is('admin/stockage*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.stockage.index') }}">Structures de stockage</a>
                     </li>
                 </ul>
             </li>

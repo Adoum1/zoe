@@ -48,6 +48,9 @@ Route::group(['as'=>'admin.','prefix'=> 'admin', 'namespace'=>'Admin','middlewar
         /** route sites de stockage */
         Route::resource('site', 'SiteController');
 
+        /** route structures de stockage */
+        Route::resource('stockage', 'StockageController');
+
     });
 
 /** End Route admin  */

@@ -118,7 +118,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('embranchements') ? 'focused error' : '' }}">
                                     <label for="embranchement">Embranchements</label>
-                                    <select name="embranchements[]" id="classe" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="embranchements[]" id="classe" class="form-control show-tick" data-live-search="true">
                                         @foreach($embranchements as $embranchement)
                                             <option value="{{ $embranchement->id }}">{{ $embranchement->name }}</option>
 
@@ -133,7 +133,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('classes') ? 'focused error' : '' }}">
                                     <label for="classe">Classes</label>
-                                    <select name="classes[]" id="classe" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="classes[]" id="classe" class="form-control show-tick" data-live-search="true">
                                         @foreach($classes as $classe)
                                             <option value="{{ $classe->id }}">{{ $classe->name }}</option>
 
@@ -148,7 +148,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('ordres') ? 'focused error' : '' }}">
                                     <label for="ordre">Ordres</label>
-                                    <select name="ordres[]" id="ordre" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="ordres[]" id="ordre" class="form-control show-tick" data-live-search="true">
                                         @foreach($ordres as $ordre)
                                             <option value="{{ $ordre->id }}">{{ $ordre->name }}</option>
 
@@ -163,7 +163,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('familles') ? 'focused error' : '' }}">
                                     <label for="famille">Familles</label>
-                                    <select name="familles[]" id="famille" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="familles[]" id="famille" class="form-control show-tick" data-live-search="true">
                                         @foreach($familles as $famille)
                                             <option value="{{ $famille->id }}">{{ $famille->name }}</option>
 
@@ -178,7 +178,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('genres') ? 'focused error' : '' }}">
                                     <label for="genre">Genres</label>
-                                    <select name="genres[]" id="genre" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="genres[]" id="genre" class="form-control show-tick" data-live-search="true">
                                         @foreach($genres as $genre)
                                             <option value="{{ $genre->id }}">{{ $genre->name }}</option>
                                         @endforeach

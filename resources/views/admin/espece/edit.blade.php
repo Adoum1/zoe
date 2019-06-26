@@ -92,7 +92,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('embranchements') ? 'focused error' : '' }}">
                                     <label for="embranchement">Embranchements</label>
-                                    <select name="embranchements[]" id="classe" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="embranchements[]" id="classe" class="form-control show-tick" data-live-search="true">
                                         @foreach($embranchements as $embranchement)
                                             <option
                                                     @foreach($espece->embranchements as $especeEmbranchement)
@@ -113,7 +113,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('classes') ? 'focused error' : '' }}">
                                     <label for="classe">Classes</label>
-                                    <select name="classes[]" id="classe" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="classes[]" id="classe" class="form-control show-tick" data-live-search="true">
                                         @foreach($classes as $classe)
                                             <option
                                                     @foreach($espece->classes as $especeClasse)
@@ -134,7 +134,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('ordres') ? 'focused error' : '' }}">
                                     <label for="ordre">Ordres</label>
-                                    <select name="ordres[]" id="ordre" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="ordres[]" id="ordre" class="form-control show-tick" data-live-search="true">
                                         @foreach($ordres as $ordre)
                                             <option
                                                     @foreach($espece->ordres as $especeOrdre)
@@ -155,7 +155,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('familles') ? 'focused error' : '' }}">
                                     <label for="famille">Familles</label>
-                                    <select name="familles[]" id="famille" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="familles[]" id="famille" class="form-control show-tick" data-live-search="true">
                                         @foreach($familles as $famille)
                                             <option
                                                     @foreach($espece->familles as $especeFamille)
@@ -177,7 +177,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('genres') ? 'focused error' : '' }}">
                                     <label for="genre">Genres</label>
-                                    <select name="genres[]" id="genre" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="genres[]" id="genre" class="form-control show-tick" data-live-search="true">
                                         @foreach($genres as $genre)
                                             <option
                                                     @foreach($espece->genres as $especeGenre)
