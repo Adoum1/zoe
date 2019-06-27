@@ -51,6 +51,10 @@ Route::group(['as'=>'admin.','prefix'=> 'admin', 'namespace'=>'Admin','middlewar
         /** route structures de stockage */
         Route::resource('stockage', 'StockageController');
 
+        /** route salarie */
+        Route::resource('salarie', 'SalarieController');
+
+
     });
 
 /** End Route admin  */

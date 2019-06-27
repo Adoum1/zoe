@@ -119,11 +119,11 @@
                         <ul class="dashboard-stat-list">
                             <li>
                                 TODAY
-                                <span class="pull-right"><b>1 200</b> <small>USERS</small></span>
+                                <span class="pull-right"><b>1000</b> <small>USERS</small></span>
                             </li>
                             <li>
                                 YESTERDAY
-                                <span class="pull-right"><b>3 872</b> <small>USERS</small></span>
+                                <span class="pull-right"><b>1000</b> <small>USERS</small></span>
                             </li>
                             <li>
                                 LAST WEEK

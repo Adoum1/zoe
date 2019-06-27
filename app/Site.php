@@ -19,4 +19,12 @@ class Site extends Model
     public function stockages(){
         return $this->belongsToMany('App\Stockage')->withTimestamps();
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function salaries(){
+        return $this->belongsToMany('App\Salarie')->withTimestamps();
+    }
+
 }

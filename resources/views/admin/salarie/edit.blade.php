@@ -10,7 +10,7 @@
 
 @extends('layouts.backend.app')
 
-@section('title', 'Stockage-MAJ')
+@section('title', 'Salarié MAJ')
 
 @push('css')
     <!-- Bootstrap Select Css -->
@@ -26,14 +26,13 @@
         <h2>
             <ol class="breadcrumb breadcrumb-bg-pink">
                 <li><a href="javascript:void(0);"><i class="material-icons">home</i> Acceuil</a></li>
-                <li class="active"><i class="material-icons">library_books</i> Gestion des sites de stockage</li>
-                <li class="active"><i class="material-icons">library_books</i> Structure de stockage</li>
-                <li class="active"><i class="material-icons">library_books</i> Mise à jour d'une structure de stockage</li>
+                <li class="active"><i class="material-icons">library_books</i> Gestion des salariés</li>
+                <li class="active"><i class="material-icons">library_books</i> Ajouter un salarié</li>
 
             </ol>
         </h2>
         <!-- Vertical Layout | With Floating Label -->
-        <form action="{{ route('admin.stockage.update', $stockage->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.salarie.update', $salarie->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row clearfix">
@@ -44,33 +43,49 @@
                             <!-- Nom du stockage -->
                             <div class="form-group form-float">
                                 <p>
-                                    <b>Libellé de la structure de stockage</b>
+                                    <b>Nom du salarié</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="name" name="name" class="form-control" value="{{ $stockage->name }}">
-                                    <label class="form-label">Libellé de la structure de stockage</label>
+                                    <input type="text" id="nom" name="nom" class="form-control" value="{{ $salarie->nom }}">
+                                    <label class="form-label">Nom du salarié</label>
+                                </div>
+                            </div>
+
+                            <!-- Nom du stockage -->
+                            <div class="form-group form-float">
+                                <p>
+                                    <b>Prénom du salarié</b>
+                                </p>
+                                <div class="form-line">
+                                    <input type="text" id="prenom" name="prenom" class="form-control" value="{{ $salarie->prenom }}">
+                                    <label class="form-label">Prénom du salarié</label>
                                 </div>
                             </div>
 
 
-                            <!-- Statut-->
-                            <div class="form-group">
-                                <input type="checkbox" id="publish" class="filled-in" name="status" value="1" {{ $stockage->status == true ? 'checked' : '' }}>
-                                <label for="publish">Indisponible</label>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <label for="sexe">Sexe</label>
+                                    <select name="sexe" id="sexe" class="form-control show-tick" data-live-search="true">
+                                            <option value="Masculin">Masculin</option>
+                                            <option value="Feminin">Feminin</option>
+                                    </select>
+                                </div>
                             </div>
 
-
-
-                            <!-- Description de l'espèce -->
-
-                            <div class="form-group">
+                            <!-- Nom du stockage -->
+                            <div class="form-group form-float">
                                 <p>
-                                    <b>Description</b>
+                                    <b>Adresse</b>
                                 </p>
-                                <textarea name="description" id="tinymce" cols="10" rows="10">
-                                    {!! $stockage->description !!}
-                                </textarea>
+                                <div class="form-line">
+                                    <input type="text" id="adresse" name="adresse" class="form-control" value="{{ $salarie->adresse }}">
+                                    <label class="form-label">Adresse</label>
+                                </div>
                             </div>
+
+
+
 
                         </div>
                     </div>
@@ -81,15 +96,26 @@
 
                         <div class="body">
 
+                            <!-- Nom du stockage -->
+                            <div class="form-group form-float">
+                                <p>
+                                    <b>Poste</b>
+                                </p>
+                                <div class="form-line">
+                                    <input type="text" id="poste" name="poste" class="form-control" value="{{ $salarie->poste }}">
+                                    <label class="form-label">Poste du salarié</label>
+                                </div>
+                            </div>
+
                             <!--Site -->
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('sites') ? 'focused error' : '' }}">
-                                    <label for="site">Sites de stockage</label>
+                                    <label for="site">Sites de rattachement</label>
                                     <select name="sites[]" id="site" class="form-control show-tick" data-live-search="true">
                                         @foreach($sites as $site)
                                             <option
-                                                    @foreach($stockage->sites as $stockageSite)
-                                                            {{ $stockageSite->id == $site->id ? 'selected' : '' }}
+                                                    @foreach($salarie->sites as $salarieSite)
+                                                    {{ $salarieSite->id == $site->id ? 'selected' : '' }}
                                                     @endforeach
                                                     value="{{ $site->id }}">{{ $site->nom }}
                                             </option>
@@ -100,28 +126,14 @@
 
                             <!--end Site-->
 
-                            <!--Site -->
-                            <div class="form-group form-float">
-                                <div class="form-line {{ $errors->has('conditions') ? 'focused error' : '' }}">
-                                    <label for="conditions">Conditions de stockage</label>
-                                        <select name="conditions[]" id="conditions" class="form-control show-tick" data-live-search="true" multiple>
-                                            @foreach($conditions as $condition)
-                                                <option
-                                                    @foreach($stockage->conditions as $stockageCondition)
-                                                            {{ $stockageCondition->id == $condition->id ? 'selected' : '' }}
-                                                    @endforeach
-                                                        value="{{ $condition->id }}">{{ $condition->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
 
 
-                                </div>
-                            </div>
+
+
 
                             <br>
 
-                            <a href="{{ route('admin.stockage.index') }}" class="btn btn-danger m-t-15 waves-effect">Retour</a>
+                            <a href="{{ route('admin.salarie.index') }}" class="btn btn-danger m-t-15 waves-effect">Retour</a>
 
                             <button type="submit" class="btn btn-primary m-t-15 waves-effect">Enregistrer</button>
 

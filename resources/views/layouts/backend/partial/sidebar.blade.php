@@ -100,7 +100,7 @@
             </li>
 
 
-            <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
+            <li class="{{ Request::is('admin/site*') ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">domain</i>
                     <span>Gestion des sites de stockage</span>
@@ -119,69 +119,35 @@
             </li>
 
 
-            <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">assignment</i>
-                    <span>Taximonie</span>
-                </a>
 
-                <ul class="ml-menu">
-                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Famille</a>
-                    </li>
-
-                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Embranchement</a>
-                    </li>
-
-                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Genre</a>
-                    </li>
-
-                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Classe</a>
-                    </li>
-
-                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Ordre</a>
-                    </li>
-
-                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Espèce</a>
-                    </li>
-                    <li>
-                        <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
-                    </li>
-                </ul>
-            </li>
-
-
-            <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">assignment</i>
-                    <span>Taximonie</span>
-                </a>
-
-                <ul class="ml-menu">
-                    <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Espèce</a>
-                    </li>
-                    <li>
-                        <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
-                    </li>
-                </ul>
-            </li>
-
-
-
-
-
-                <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.espece.index') }}">
-                        <i class="material-icons">apps</i>
-                        <span>Espèce</span>
+                <li class="{{ Request::is('admin/salarie') ? 'active' : '' }}">
+                    <a href="{{ route('admin.salarie.index') }}">
+                        <i class="material-icons">group</i>
+                        <span>Gestion des salairées</span>
                     </a>
                 </li>
+
+
+
+            <li class="{{ Request::is('admin/site*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">group</i>
+                    <span>Gestion des salairées</span>
+                </a>
+
+                <ul class="ml-menu">
+                    <li class="{{ Request::is('admin/site*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.site.index') }}">Sites de stockage</a>
+                    </li>
+
+
+                    <li class="{{ Request::is('admin/stockage*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.stockage.index') }}">Structures de stockage</a>
+                    </li>
+                </ul>
+            </li>
+
+
 
 
 
