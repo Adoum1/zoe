@@ -128,24 +128,13 @@
                 </li>
 
 
+                <li class="{{ Request::is('admin/lot') ? 'active' : '' }}">
+                    <a href="{{ route('admin.lot.index') }}">
+                        <i class="material-icons">wb_sunny</i>
+                        <span>Gestion des lots</span>
+                    </a>
+                </li>
 
-            <li class="{{ Request::is('admin/site*') ? 'active' : '' }}">
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">group</i>
-                    <span>Gestion des salairées</span>
-                </a>
-
-                <ul class="ml-menu">
-                    <li class="{{ Request::is('admin/site*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.site.index') }}">Sites de stockage</a>
-                    </li>
-
-
-                    <li class="{{ Request::is('admin/stockage*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.stockage.index') }}">Structures de stockage</a>
-                    </li>
-                </ul>
-            </li>
 
 
 

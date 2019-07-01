@@ -27,4 +27,12 @@ class Site extends Model
         return $this->belongsToMany('App\Salarie')->withTimestamps();
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function lots(){
+        return $this->belongsToMany('App\Lot')->withTimestamps();
+    }
+
 }

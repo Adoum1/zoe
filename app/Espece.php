@@ -13,6 +13,7 @@ class Espece extends Model
         return $this->belongsTo('App\User');
     }
 
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -46,5 +47,13 @@ class Espece extends Model
      */
     public function ordres(){
         return $this->belongsToMany('App\Ordre')->withTimestamps();
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function lots(){
+        return $this->belongsToMany('App\Lot')->withTimestamps();
     }
 }

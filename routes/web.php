@@ -54,6 +54,10 @@ Route::group(['as'=>'admin.','prefix'=> 'admin', 'namespace'=>'Admin','middlewar
         /** route salarie */
         Route::resource('salarie', 'SalarieController');
 
+        /** route lots */
+        Route::resource('lot', 'LotController');
+
+
 
     });
 
