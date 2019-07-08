@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,11 +38,20 @@ class LoginController extends Controller
     {
         if (Auth::check() && Auth::user()->role->id == 1){
             $this->redirectTo = route('admin.dashboard');
-        }else{
+            Toastr::success('Bienvenue { !! Auth::user()->role->name !!}', 'Connexion');
+
+        }elseif (Auth::check() && Auth::user()->role->id == 3){
+
+            $this->redirectTo = route('welcome');
+        }
+        else{
             $this->redirectTo =route('gestionnaire.dashboard');
         }
 
         $this->middleware('guest')->except('logout');
+
+
+
     }
 }
 

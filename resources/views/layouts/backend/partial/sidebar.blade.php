@@ -65,7 +65,7 @@
 
                 <ul class="ml-menu">
                     <li class="{{ Request::is('admin/espece*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.espece.index') }}">Espèce</a>
+                        <a href="{{ route('admin.espece.index') }}">Rattacher une espèce</a>
                     </li>
 
 
@@ -142,6 +142,14 @@
 
 
                 <li class="header">System</li>
+
+                <li class="{{ Request::is('admin/user') ? 'active' : '' }}">
+                    <a href="{{ route('admin.user.index') }}">
+                        <i class="material-icons">group</i>
+                        <span>Administrer les uttilisateurs</span>
+                    </a>
+                </li>
+
 
                 <li class="">
                     <a class="dropdown-item" href="{{ route('logout') }}"

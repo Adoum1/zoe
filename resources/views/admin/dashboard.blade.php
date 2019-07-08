@@ -18,7 +18,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>DASHBOARD</h2>
+            <h2>TABLEAU DE BORD</h2>
         </div>
 
         <!-- Widgets -->

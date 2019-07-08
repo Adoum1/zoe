@@ -11,9 +11,22 @@
 |
 */
 
-Route::get('/', function () {
+/** Route acceuil  */
+Route::get('/', 'InternauteController@index', function () {
     return view('welcome');
 })->name('home');
+
+/** Route tous les especes */
+Route::get('/especes', 'InternauteController@getEspeces', function () {
+    return view('especes');
+})->name('especes');
+
+/** Route espece */
+Route::get('/espece/{slug}', 'InternauteController@getEspeceOne', function () {
+    return view('espece');
+})->name('espece');
+
+//Route::get('/', 'HomeController@index')->name('welcome');
 
 Auth::routes();
 
@@ -56,6 +69,10 @@ Route::group(['as'=>'admin.','prefix'=> 'admin', 'namespace'=>'Admin','middlewar
 
         /** route lots */
         Route::resource('lot', 'LotController');
+
+
+        /** route users */
+        Route::resource('user', 'UserController');
 
 
 

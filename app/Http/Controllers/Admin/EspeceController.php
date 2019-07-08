@@ -45,6 +45,38 @@ class EspeceController extends Controller
         $genres = Genre::all();
         $ordres = Ordre::all();
 
+      /*  if($classes->count() == 0 || $genres->count() == 0){
+            Toastr::info('Vous devez ajouter une classe avant pour rattacher une espéce', 'Gestion de la Taximonie du vivant', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+        }*/
+
+        if($embranchements->count() == 0 ){
+            Toastr::info('Vous devez ajouter un Embranchement avant pour rattacher une espéce', 'GESTION DE LA TAXIMONIE DU VIVANT', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+        }
+
+        if($classes->count() == 0 ){
+            Toastr::info('Vous devez ajouter une Classe avant pour rattacher une espéce', 'Gestion de la Taximonie du vivant', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+        }
+
+
+        if($familles->count() == 0 ){
+            Toastr::info('Vous devez ajouter une Famille avant pour rattacher une espéce', 'Gestion de la Taximonie du vivant', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+        }
+
+        if($genres->count() == 0 ){
+            Toastr::info('Vous devez ajouter un Genre avant pour rattacher une espéce', 'Gestion de la Taximonie du vivant', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+        }
+
+        if($ordres->count() == 0 ){
+            Toastr::info('Vous devez ajouter un Ordre avant pour rattacher une espéce', 'Gestion de la Taximonie du vivant', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+        }
+
+
         return view('admin.espece.create', compact('classes', 'familles', 'embranchements', 'genres', 'ordres'));
     }
 
