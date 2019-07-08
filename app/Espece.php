@@ -56,4 +56,13 @@ class Espece extends Model
     public function lots(){
         return $this->belongsToMany('App\Lot')->withTimestamps();
     }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function alertes(){
+        return $this->belongsToMany('App\Alerte')->withTimestamps();
+    }
+
 }

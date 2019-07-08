@@ -74,6 +74,10 @@ Route::group(['as'=>'admin.','prefix'=> 'admin', 'namespace'=>'Admin','middlewar
         /** route users */
         Route::resource('user', 'UserController');
 
+        /** route alertes */
+        Route::resource('alerte', 'AlerteController');
+
+
 
 
     });

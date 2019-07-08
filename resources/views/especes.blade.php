@@ -1,131 +1,292 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: gomab
- * Date: 03/07/19
- * Time: 16:46
- */
-?>
-
-        <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="not-ie" lang="en"> <!--<![endif]-->
 <head>
-    <title>ZOE</title>
+    <!-- Basic Meta Tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ZOE</title>
+    <meta name="description" content="ucorpora demo - Free Business Corporate HTML Template">
+    <meta name="keywords" content="ucorpora, ucorpora demo, free, template, corporate, clean, modern, bootstrap, creative, design">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if (gte IE 9)|!(IE)]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <![endif]-->
 
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <!-- Favicon -->
+    <link href="{{ asset('assets/front/img/favicon.ico') }}" rel="icon" type="image/png">
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/open-iconic-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.css') }}">
+    <!-- Styles -->
+    <link href="{{ asset('assets/front/css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/front/css/bootstrap-override.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/magnific-popup.css') }}">
+    <!-- Font Avesome Styles -->
+    <link href="{{ asset('assets/front/css/font-awesome/font-awesome.css') }}" rel="stylesheet">
+    <!--[if IE 7]>
+    <link href="{{ asset('assets/front/css/font-awesome/font-awesome-ie7.min.css') }}" rel="stylesheet">
+    <![endif]-->
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/aos.css') }}">
+    <!-- FlexSlider Style -->
+    <link rel="stylesheet" href="{{ asset('assets/front/css/flexslider.css') }}" type="text/css" media="screen">
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/ionicons.min.css') }}">
+    <!-- Internet Explorer condition - HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/jquery.timepicker.css') }}">
-
-
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
 </head>
-
 <body>
-    <!-- header -->
-    @include('layouts.frontend.partial.header')
-    <!-- #header -->
+<!-- Header -->
+<header id="header">
+    <div class="container">
+        <div class="row t-container">
 
-    <!-- header -->
-    @include('layouts.frontend.partial.menu')
-    <!-- #header -->
-
-
-    <section class="hero-wrap hero-wrap-2" style="background-image: url{{ asset('assets/frontend/images/el.png') }};" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center">
-                <div class="col-md-9 ftco-animate text-center">
-                    <h1 class="mb-2 bread">Taximonie</h1>
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Acceuil<i class="ion-ios-arrow-forward"></i></a></span> <span>Taximonie <i class="ion-ios-arrow-forward"></i></span></p>
+            <!-- Logo -->
+            <div class="span3">
+                <div class="logo">
+                    <a href="index.htm"><img src="{{ asset('assets/front/img/logo-header.png') }}" alt=""></a>
                 </div>
             </div>
+
+            <div class="span9">
+                <div class="row space60"></div>
+                <nav id="nav" role="navigation">
+                    <a href="#nav" title="Show navigation">Show navigation</a>
+                    <a href="#" title="Hide navigation">Hide navigation</a>
+                    <ul class="clearfix">
+                        <li class="active"><a href="index.htm" title="">Acceuil</a></li>
+                        <li><a href="about-us.htm" title="">Espèces</a></li>
+                        <li><a href="gallery.htm" title="">Contact</a></li>
+                        <li><a href="services.htm" title="">  ll  </a></li>
+
+                        <li><a href="services.htm" title="">Connexion</a></li>
+
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </section>
+        <div class="row space40"></div>
 
+    </div>
+</header>
+<!-- Header End -->
+<!-- Content -->
+<!-- Titlebar
+================================================== -->
+<section id="titlebar">
+    <!-- Container -->
+    <div class="container">
 
+        <div class="eight columns">
+            <h3 class="left">Espèces</h3>
+        </div>
 
-    <section class="ftco-section bg-light">
-        <div class="container">
-           <div class="row">
-               @foreach($especes as $key=>$espece)
-                   <div class="col-md-4 ftco-animate">
-                       <div class="blog-entry">
-                           <a href="{{ route('espece', $espece->slug) }}" class="block-20" style="background-image: url({{ Storage::disk('public')->url('espece/'.$espece->image) }});">
-                               <div class="meta-date text-center p-2">
-                                   <span class="day">23</span>
-                                   <span class="mos">January</span>
-                                   <span class="yr">2019</span>
-                               </div>
-                           </a>
-                           <div class="text bg-white p-4">
-                               <h3 class="heading"><a href="#">{{ $espece->name }}</a></h3>
-                               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                               <div class="d-flex align-items-center mt-4">
-                                   <p class="mb-0"><a href="#" class="btn btn-primary">Lire plus <span class="ion-ios-arrow-round-forward"></span></a></p>
-                                   <p class="ml-auto mb-0">
-                                       <a href="#" class="mr-2">{{ $espece->user->nom }}</a>
-                                       <a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-                                   </p>
-                               </div>
-                           </div>
-                       </div>
-                       </div>
+        <div class="eight columns">
+            <nav id="breadcrumbs">
+                <ul>
+                    <li>Vous êtes ici:</li>
+                    <li><a href="#">Acceuil</a></li>
+                    <li>Espèces</li>
+                </ul>
+            </nav>
+        </div>
 
-               @endforeach
-           </div>
-            <div class="row no-gutters my-5">
-                <div class="col text-center">
-                    <div class="block-27">
-                        <ul>
-                            <li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
-                            <li class="active"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
-                        </ul>
+    </div>
+    <!-- Container / End -->
+</section>
+
+<!-- Content -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h3>&nbsp;</h3>
+            </div>
+
+            <div class="span9">
+
+                <!-- Blog Item -->
+                @foreach($especes as $key=>$espece)
+                <div class="row">
+                    <div class="span1">
+
+                        <div class="blog-icon">
+                           <button>Lancer une alerte</button>
+                        </div>
+
+                    </div>
+                    <div class="span8">
+                        <a href="{{ route('espece', $espece->slug) }}"><img src="{{ Storage::disk('public')->url('espece/'.$espece->image) }}" alt=""></a>
+
+                        <div class="row">
+                            <div class="span8 post-d-info">
+                                <a href="blog-detail.htm"><h3>{{ $espece->name }}</h3></a>
+                                <div class="blue-dark">
+                                    <i class="icon-user"></i> By {{ $espece->user->nom }} <i class="icon-tag"></i> Photography | Portrait <i class="icon-comment-alt"></i> With 12 Comments
+                                </div>
+                                <p>
+                                    {!!  str_limit($espece->description, '300') !!} <a href="{{ route('espece', $espece->slug) }}">...Lire plus</a>
+                                </p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+                <!-- Blog Item End -->
+
+                <div class="row space40"></div>
+                @endforeach
+
+
+                <!-- Paging -->
+                <div class="row">
+                    <div class="span9">
+                        <a href="#" class="paging">&#62;</a>
+                        <a href="#" class="paging">84</a>
+                        <a href="#" class="paging">83</a>
+                        <a href="#" class="paging">82</a>
+                        <a href="#" class="paging">...</a>
+                        <a href="#" class="paging">3</a>
+                        <a href="#" class="paging">2</a>
+                        <a href="#" class="paging">1</a>
+                        <a href="#" class="paging">&#60;</a>
+                    </div>
+                </div>
+                <!-- Paging End -->
+
+                <div class="row space40"></div>
+
+            </div>
+
+            <!-- Side Bar -->
+            <div class="span3">
+
+                <h3 class="p-t-0">Recherche</h3>
+                <div class="search-box">
+                    <a href="#" class="search-icon"><i class="icon-search"></i></a>
+                    <input class="search" name="" value="Search">
+                </div>
+
+                <h3>Classes</h3>
+                <a href="#"><div class="tag">WordPress</div></a>
+                <a href="#"><div class="tag">Webdesign</div></a>
+                <a href="#"><div class="tag">Post-processing</div></a>
+                <a href="#"><div class="tag">Tourism</div></a>
+                <a href="#"><div class="tag">Rendering</div></a>
+                <a href="#"><div class="tag">Photography</div></a>
+
+                <h3>Latest Tweets</h3>
+                <i class="icon-twitter"></i> Saying "Wow, You're cool." when you see someone doing something stupid. <a href="#" rel="external">http://t.co/YywnqBb8</a><br>
+                6 minutes ago
+                <br><br>
+                <i class="icon-twitter"></i> Are you getting ready to work on a new project, take off on a sales trip.
+                <a href="#" rel="external">http://pic.witt.com.co/Uyoyyk#sp</a><br>
+                33 minutes ago
+
+                <h3>Photos From Flickr</h3>
+                <div class="flickr-widget">
+                    <div class="photo-stream">
+                        <img src="img/stream/01.jpg" alt="">
+                    </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/02.jpg" alt="">
+                    </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/03.jpg" alt="">
+                    </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/04.jpg" alt="">
+                    </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/05.jpg" alt="">
+                    </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/06.jpg" alt="">
+                    </div>
+                </div>
+
+
+                <div class="row space50"></div>
             </div>
         </div>
-    </section>
+    </div>
+</div>
+<!-- Content End -->
+<!-- Content End -->
 
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span5">
+                <h3>Contact Form</h3>
+                <div>
+                    <form class="form-main" name="ajax-form" id="ajax-form" action="#" method="post">
+                        <div id="ajaxsuccess">E-mail was successfully sent.</div>
+                        <div class="error" id="err-name">Please enter name</div>
+                        <input name="name" id="name" type="text" value="Name" onfocus="if(this.value == 'Name') this.value='';" onblur="if(this.value == '') this.value='Name';">
 
+                        <div class="error" id="err-email">Please enter e-mail</div>
+                        <div class="error" id="err-emailvld">E-mail is not a valid format</div>
+                        <input  name="email" id="email" type="text" value="E-mail" onfocus="if(this.value == 'E-mail') this.value='';" onblur="if(this.value == '') this.value='E-mail';">
 
+                        <div class="error" id="err-message">Please enter message</div>
+                        <textarea  name="message" id="message" onfocus="if(this.value == 'Message') this.value='';" onblur="if(this.value == '') this.value='Message';">Message</textarea><br>
+                        <div>
+                            <div class="error" id="err-form">There was a problem validating the form please check!</div>
+                            <div class="error" id="err-timedout">The connection to the server timed out!</div>
+                            <div class="error" id="err-state"></div>
+                        </div>
+                        <button id="send" class="btn f-right">Send Message <i class="icon-ok"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="span3 offset3">
+                <h3>Address</h3>
+                81 Sunnyvale Street<br>
+                Los Angeles, CA 90185<br>
+                United States<br>
+                <br>
+                <i class="icon-phone"></i>+01 880 555 999<br>
+                <i class="icon-envelope"></i><a href="mailto:support@example.com">support@example.com</a><br>
+                <i class="icon-home"></i><a href="#">www.example.com</a>
 
+                <div class="row space40"></div>
 
-    <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery-migrate-3.0.1.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.easing.1.3.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/aos.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.animateNumber.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.timepicker.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/scrollax.min.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="{{ asset('assets/frontend/js/google-map.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+                <a href="#" class="social-network sn2 behance"></a>
+                <a href="#" class="social-network sn2 facebook"></a>
+                <a href="#" class="social-network sn2 pinterest"></a>
+                <a href="#" class="social-network sn2 flickr"></a>
+                <a href="#" class="social-network sn2 dribbble"></a>
+                <a href="#" class="social-network sn2 lastfm"></a>
+                <a href="#" class="social-network sn2 forrst"></a>
+                <a href="#" class="social-network sn2 xing"></a>
+            </div>
+        </div>
+
+        <div class="row space50"></div>
+        <div class="row">
+            <div class="span6">
+                <div class="logo-footer">
+                    Design by <a href="https://www.freshdesignweb.com">freshDesignweb</a>
+                </div>
+            </div>
+            <div class="span6 right">
+                &copy; 2020. All rights reserved.
+            </div>
+        </div>
+
+    </div>
+</footer>
+<!-- Footer End -->
+
+<!-- JavaScripts -->
+<script type="text/javascript" src="{{ asset('assets/front/js/jquery-1.8.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/front/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/front/js/functions.js') }}"></script>
+<script type="text/javascript" defer src="{{ asset('assets/front/js/jquery.flexslider.js') }}"></script>
+
 </body>
+</html>

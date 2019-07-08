@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: gomab
+ * Date: 08/07/19
+ * Time: 17:46
+ */
+?>
+
+        <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -6,7 +15,7 @@
 <head>
     <!-- Basic Meta Tags -->
     <meta charset="utf-8">
-    <title>ZOE</title>
+    <title>Ucorpora Demo</title>
     <meta name="description" content="ucorpora demo - Free Business Corporate HTML Template">
     <meta name="keywords" content="ucorpora, ucorpora demo, free, template, corporate, clean, modern, bootstrap, creative, design">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,20 +25,20 @@
     <![endif]-->
 
     <!-- Favicon -->
-    <link href="{{ asset('assets/front/img/favicon.ico') }}" rel="icon" type="image/png">
+    <link href="img/favicon.ico" rel="icon" type="image/png">
 
     <!-- Styles -->
-    <link href="{{ asset('assets/front/css/styles.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/front/css/bootstrap-override.css') }}" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/bootstrap-override.css" rel="stylesheet">
 
     <!-- Font Avesome Styles -->
-    <link href="{{ asset('assets/front/css/font-awesome/font-awesome.css') }}" rel="stylesheet">
+    <link href="css/font-awesome/font-awesome.css" rel="stylesheet">
     <!--[if IE 7]>
-    <link href="{{ asset('assets/front/css/font-awesome/font-awesome-ie7.min.css') }}" rel="stylesheet">
+    <link href="css/font-awesome/font-awesome-ie7.min.css" rel="stylesheet">
     <![endif]-->
 
     <!-- FlexSlider Style -->
-    <link rel="stylesheet" href="{{ asset('assets/front/css/flexslider.css') }}" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen">
 
     <!-- Internet Explorer condition - HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -46,7 +55,7 @@
             <!-- Logo -->
             <div class="span3">
                 <div class="logo">
-                    <a href="index.htm"><img src="{{ asset('assets/front/img/logo-header.png') }}" alt=""></a>
+                    <a href="index.htm"><img src="img/logo-header.png" alt=""></a>
                 </div>
             </div>
 
@@ -56,13 +65,18 @@
                     <a href="#nav" title="Show navigation">Show navigation</a>
                     <a href="#" title="Hide navigation">Hide navigation</a>
                     <ul class="clearfix">
-                        <li class="active"><a href="index.htm" title="">Acceuil</a></li>
-                        <li><a href="about-us.htm" title="">Espèces</a></li>
-                        <li><a href="gallery.htm" title="">Contact</a></li>
-                        <li><a href="services.htm" title="">  ll  </a></li>
-
-                        <li><a href="services.htm" title="">Connexion</a></li>
-
+                        <li class="active"><a href="index.htm" title="">Home</a></li>
+                        <li><a href="about-us.htm" title="">About Us</a></li>
+                        <li><a href="gallery.htm" title="">Gallery</a></li>
+                        <li><a href="services.htm" title="">Services</a></li>
+                        <li><a href="components.htm" title=""><span>Features</span></a>
+                            <ul> <!-- Submenu -->
+                                <li><a href="components.htm" title="">Components</a></li>
+                                <li><a href="blog.htm" title="">Blog</a></li>
+                                <li><a href="blog-detail.htm" title="">Blog Detail</a></li>
+                                <li><a href="contact.htm" title="">Contact</a></li>
+                            </ul> <!-- End Submenu -->
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -71,16 +85,16 @@
         <div class="slider1 flexslider">  <!-- Slider -->
             <ul class="slides">
                 <li>
-                    <img src="{{ asset('assets/front/img/slider/1.jpg') }}" alt="">
+                    <img src="img/slider/1.jpg" alt="">
                 </li>
                 <li>
-                    <img src="{{ asset('assets/front/img/slider/2.jpg') }}" alt="">
+                    <img src="img/slider/2.jpg" alt="">
                 </li>
                 <li>
-                    <img src="{{ asset('assets/front/img/slider/3.jpg') }}" alt="">
+                    <img src="img/slider/3.jpg" alt="">
                 </li>
                 <li>
-                    <img src="{{ asset('assets/front/img/slider/4.jpg') }}" alt="">
+                    <img src="img/slider/4.jpg" alt="">
                 </li>
             </ul>
         </div>  <!-- Slider End -->
@@ -311,10 +325,11 @@
 <!-- Footer End -->
 
 <!-- JavaScripts -->
-<script type="text/javascript" src="{{ asset('assets/front/js/jquery-1.8.3.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/front/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/front/js/functions.js') }}"></script>
-<script type="text/javascript" defer src="{{ asset('assets/front/js/jquery.flexslider.js') }}"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" defer src="js/jquery.flexslider.js"></script>
 
 </body>
 </html>
+

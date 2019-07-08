@@ -1,239 +1,272 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: gomab
- * Date: 03/07/19
- * Time: 16:46
- */
-?>
-
-        <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="not-ie" lang="en"> <!--<![endif]-->
 <head>
-    <title>ZOE</title>
+    <!-- Basic Meta Tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ZOE</title>
+    <meta name="description" content="ucorpora demo - Free Business Corporate HTML Template">
+    <meta name="keywords" content="ucorpora, ucorpora demo, free, template, corporate, clean, modern, bootstrap, creative, design">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if (gte IE 9)|!(IE)]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <![endif]-->
 
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <!-- Favicon -->
+    <link href="{{ asset('assets/front/img/favicon.ico') }}" rel="icon" type="image/png">
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/open-iconic-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.css') }}">
+    <!-- Styles -->
+    <link href="{{ asset('assets/front/css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/front/css/bootstrap-override.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/magnific-popup.css') }}">
+    <!-- Font Avesome Styles -->
+    <link href="{{ asset('assets/front/css/font-awesome/font-awesome.css') }}" rel="stylesheet">
+    <!--[if IE 7]>
+    <link href="{{ asset('assets/front/css/font-awesome/font-awesome-ie7.min.css') }}" rel="stylesheet">
+    <![endif]-->
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/aos.css') }}">
+    <!-- FlexSlider Style -->
+    <link rel="stylesheet" href="{{ asset('assets/front/css/flexslider.css') }}" type="text/css" media="screen">
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/ionicons.min.css') }}">
+    <!-- Internet Explorer condition - HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/jquery.timepicker.css') }}">
-
-
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
 </head>
-
 <body>
-    <!-- header -->
-    <!-- #header -->
+<!-- Header -->
+<header id="header">
+    <div class="container">
+        <div class="row t-container">
 
-    <!-- header -->
-    @include('layouts.frontend.partial.menu')
-    <!-- #header -->
-
-
-
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center">
-                <div class="col-md-9 ftco-animate text-center">
-                    <h1 class="mb-2 bread">Taximonie</h1>
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Acceuil <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="index.html">Taximonie <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p>
+            <!-- Logo -->
+            <div class="span3">
+                <div class="logo">
+                    <a href="index.htm"><img src="{{ asset('assets/front/img/logo-header.png') }}" alt=""></a>
                 </div>
             </div>
+
+            <div class="span9">
+                <div class="row space60"></div>
+                <nav id="nav" role="navigation">
+                    <a href="#nav" title="Show navigation">Show navigation</a>
+                    <a href="#" title="Hide navigation">Hide navigation</a>
+                    <ul class="clearfix">
+                        <li class="active"><a href="index.htm" title="">Acceuil</a></li>
+                        <li><a href="about-us.htm" title="">Espèces</a></li>
+                        <li><a href="gallery.htm" title="">Contact</a></li>
+                        <li><a href="services.htm" title="">  ll  </a></li>
+
+                        <li><a href="services.htm" title="">Connexion</a></li>
+
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </section>
+        <div class="row space40"></div>
 
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 ftco-animate">
-                    <h2 class="mb-3">{{ $espece->name }}
-                    </h2>
+    </div>
+</header>
+<!-- Header End -->
+<!-- Content -->
+<!-- Titlebar
+================================================== -->
+<section id="titlebar">
+    <!-- Container -->
+    <div class="container">
 
-                    <img src="{{Storage::disk('public')->url('espece/'.$espece->image) }}" alt="" class="img-fluid">
+        <div class="eight columns">
+            <h3 class="left">Espèces</h3>
+        </div>
 
-                    <p>test test{!! $espece->description !!}</p>
+        <div class="eight columns">
+            <nav id="breadcrumbs">
+                <ul>
+                    <li>Vous êtes ici:</li>
+                    <li><a href="#">Acceuil</a></li>
+                    <li>Espèces</li>
+                </ul>
+            </nav>
+        </div>
 
-                    <div class="tag-widget post-tag-container mb-5 mt-5">
-                        <div class="tagcloud">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#alerteModal">
-                                Launch demo modal
-                            </button>
+    </div>
+    <!-- Container / End -->
+</section>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="alerteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
+<!-- Content -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h3>&nbsp;</h3>
+            </div>
+
+            <div class="span9">
+
+                <!-- Blog Item -->
+
+                    <div class="row">
+                        <div class="span1">
+
+                            <div class="blog-icon">
+                                <button>Lancer une alerte</button>
                             </div>
 
                         </div>
+                        <div class="span8">
+                            <a href="{{ route('espece', $espece->slug) }}"><img src="{{ Storage::disk('public')->url('espece/'.$espece->image) }}" alt=""></a>
 
-                    </div>
-
-                    <div class="about-author d-flex p-4 bg-light">
-                        <div class="bio mr-5">
-                            <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
-                        </div>
-                        <div class="desc">
-                            <h3>George Washington</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
-                        </div>
-                    </div>
-
-
-                    <div class="pt-5 mt-5">
-                        <h3 class="mb-5 h4 font-weight-bold">6 Comments</h3>
-                        <ul class="comment-list">
-                            <li class="comment">
-                                <div class="vcard bio">
-                                    <img src="images/person_1.jpg" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3>{{ $espece->user->name }}</h3>
-                                    <div class="meta mb-2">{{ $espece->created_at->diffForHumans() }}</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <p><a href="#" class="reply">Reply</a></p>
-                                </div>
-                            </li>
-
-                        </ul>
-                        <!-- END comment-list -->
-
-                        <div class="comment-form-wrap pt-5">
-                            <h3 class="mb-5 h4 font-weight-bold">Laisser un commentaire</h3>
-                            <form action="#" class="p-5 bg-light">
-                                <div class="form-group">
-                                    <label for="name">Name *</label>
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email *</label>
-                                    <input type="email" class="form-control" id="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="website">Website</label>
-                                    <input type="url" class="form-control" id="website">
+                            <div class="row">
+                                <div class="span8 post-d-info">
+                                    <a href="blog-detail.htm"><h3>{{ $espece->name }}</h3></a>
+                                    <div class="blue-dark">
+                                        <i class="icon-user"></i> By {{ $espece->user->nom }} <i class="icon-tag"></i> Photography | Portrait <i class="icon-comment-alt"></i> With 12 Comments
+                                    </div>
+                                    <p>
+                                        {!! $espece->description !!}
+                                    </p>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="message">Message</label>
-                                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-                                </div>
-
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div> <!-- .col-md-8 -->
+                    <!-- Blog Item End -->
 
-                <div class="col-lg-4 sidebar ftco-animate">
+                    <div class="row space40"></div>
 
 
-                    <div class="sidebar-box ftco-animate">
-                        <h3>Détail de la taximonie</h3>
-                        <ul class="categories">
-                            <li><a href="#">Règne <span> {{ $espece->regne }}</span></a></li>
-                            <li><a href="#">Embranchement
-                                    <span>
-                                           @foreach($espece->embranchements as $embranchement)
-                                            {{ $embranchement->name }}
-                                        @endforeach
-                                    </span>
-                                </a>
-                            </li>
-                            <li><a href="#">Classe
-                                    <span>
 
-                                           @foreach($espece->classes as $classe)
-                                            {{ $classe->name }}
-                                        @endforeach
-                                    </span>
-                                </a>
-                            </li>
-                            <li><a href="#">Ordre <span>
-                                          @foreach($espece->ordres as $ordre)
-                                            {{ $ordre->name }}
-                                        @endforeach
-                                    </span></a>
-                            </li>
-                            <li><a href="#">Famille <span>
 
-                                           @foreach($espece->familles as $famille)
-                                            {{ $famille->name }}
-                                        @endforeach
-                                    </span></a>
-                            </li>
+                <div class="row space40"></div>
 
-                            <li><a href="#">Genre <span class="tag-cloud-link">
+            </div>
 
-                                           @foreach($espece->genres as $genre)
-                                          {{ $genre->name }}
-                                        @endforeach
-                                    </span></a>
-                            </li>
+            <!-- Side Bar -->
+            <div class="span3">
 
-                        </ul>
+
+                <h3>Taximonie</h3>
+                <a href="#"><div class="tag">WordPress</div></a>
+                <a href="#"><div class="tag">Webdesign</div></a>
+                <a href="#"><div class="tag">Post-processing</div></a>
+                <a href="#"><div class="tag">Tourism</div></a>
+                <a href="#"><div class="tag">Rendering</div></a>
+                <a href="#"><div class="tag">Photography</div></a>
+
+                <h3>Latest Tweets</h3>
+                <i class="icon-twitter"></i> Saying "Wow, You're cool." when you see someone doing something stupid. <a href="#" rel="external">http://t.co/YywnqBb8</a><br>
+                6 minutes ago
+                <br><br>
+                <i class="icon-twitter"></i> Are you getting ready to work on a new project, take off on a sales trip.
+                <a href="#" rel="external">http://pic.witt.com.co/Uyoyyk#sp</a><br>
+                33 minutes ago
+
+                <h3>Photos From Flickr</h3>
+                <div class="flickr-widget">
+                    <div class="photo-stream">
+                        <img src="img/stream/01.jpg" alt="">
                     </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/02.jpg" alt="">
+                    </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/03.jpg" alt="">
+                    </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/04.jpg" alt="">
+                    </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/05.jpg" alt="">
+                    </div>
+                    <div class="photo-stream">
+                        <img src="img/stream/06.jpg" alt="">
+                    </div>
+                </div>
 
 
-                </div><!-- END COL -->
+                <div class="row space50"></div>
             </div>
         </div>
-    </section>
+    </div>
+</div>
+<!-- Content End -->
+<!-- Content End -->
 
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span5">
+                <h3>Contact Form</h3>
+                <div>
+                    <form class="form-main" name="ajax-form" id="ajax-form" action="#" method="post">
+                        <div id="ajaxsuccess">E-mail was successfully sent.</div>
+                        <div class="error" id="err-name">Please enter name</div>
+                        <input name="name" id="name" type="text" value="Name" onfocus="if(this.value == 'Name') this.value='';" onblur="if(this.value == '') this.value='Name';">
 
+                        <div class="error" id="err-email">Please enter e-mail</div>
+                        <div class="error" id="err-emailvld">E-mail is not a valid format</div>
+                        <input  name="email" id="email" type="text" value="E-mail" onfocus="if(this.value == 'E-mail') this.value='';" onblur="if(this.value == '') this.value='E-mail';">
 
-    <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery-migrate-3.0.1.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.easing.1.3.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/aos.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.animateNumber.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/jquery.timepicker.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/scrollax.min.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="{{ asset('assets/frontend/js/google-map.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
-    <script>
+                        <div class="error" id="err-message">Please enter message</div>
+                        <textarea  name="message" id="message" onfocus="if(this.value == 'Message') this.value='';" onblur="if(this.value == '') this.value='Message';">Message</textarea><br>
+                        <div>
+                            <div class="error" id="err-form">There was a problem validating the form please check!</div>
+                            <div class="error" id="err-timedout">The connection to the server timed out!</div>
+                            <div class="error" id="err-state"></div>
+                        </div>
+                        <button id="send" class="btn f-right">Send Message <i class="icon-ok"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="span3 offset3">
+                <h3>Address</h3>
+                81 Sunnyvale Street<br>
+                Los Angeles, CA 90185<br>
+                United States<br>
+                <br>
+                <i class="icon-phone"></i>+01 880 555 999<br>
+                <i class="icon-envelope"></i><a href="mailto:support@example.com">support@example.com</a><br>
+                <i class="icon-home"></i><a href="#">www.example.com</a>
 
-    </script>
+                <div class="row space40"></div>
+
+                <a href="#" class="social-network sn2 behance"></a>
+                <a href="#" class="social-network sn2 facebook"></a>
+                <a href="#" class="social-network sn2 pinterest"></a>
+                <a href="#" class="social-network sn2 flickr"></a>
+                <a href="#" class="social-network sn2 dribbble"></a>
+                <a href="#" class="social-network sn2 lastfm"></a>
+                <a href="#" class="social-network sn2 forrst"></a>
+                <a href="#" class="social-network sn2 xing"></a>
+            </div>
+        </div>
+
+        <div class="row space50"></div>
+        <div class="row">
+            <div class="span6">
+                <div class="logo-footer">
+                    Design by <a href="https://www.freshdesignweb.com">freshDesignweb</a>
+                </div>
+            </div>
+            <div class="span6 right">
+                &copy; 2020. All rights reserved.
+            </div>
+        </div>
+
+    </div>
+</footer>
+<!-- Footer End -->
+
+<!-- JavaScripts -->
+<script type="text/javascript" src="{{ asset('assets/front/js/jquery-1.8.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/front/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/front/js/functions.js') }}"></script>
+<script type="text/javascript" defer src="{{ asset('assets/front/js/jquery.flexslider.js') }}"></script>
+
 </body>
+</html>
