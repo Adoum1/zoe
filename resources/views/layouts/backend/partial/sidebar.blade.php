@@ -135,6 +135,14 @@
                     </a>
                 </li>
 
+                <li class="{{ Request::is('admin/alerte') ? 'active' : '' }}">
+                    <a href="{{ route('admin.alerte.index') }}">
+                        <i class="material-icons">add_alert</i>
+                        <span>Gestion des alertes</span>
+                    </a>
+                </li>
+
+
 
 
 

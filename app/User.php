@@ -65,4 +65,16 @@ class User extends Authenticatable
     public function site(){
         return $this->belongsTo('App\Site');
     }
+
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function alertes(){
+        return $this->hasMany('App\Alerte');
+    }
+
+
+
 }
