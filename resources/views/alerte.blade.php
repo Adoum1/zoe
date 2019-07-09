@@ -53,7 +53,7 @@
     <div class="container">
 
         <div class="eight columns">
-            <h3 class="left">Espèces</h3>
+            <h3 class="left">Alertes</h3>
         </div>
 
         <div class="eight columns">
@@ -61,7 +61,7 @@
                 <ul>
                     <li>Vous êtes ici:</li>
                     <li><a href="#">Acceuil</a></li>
-                    <li>Espèces</li>
+                    <li>Alertes</li>
                 </ul>
             </nav>
         </div>
@@ -87,18 +87,19 @@
 
                         </div>
                         <div class="span8">
-                            <a href=""><h3>{{ $espece->name }}</h3></a>
-
-                            <a href="{{ route('espece', $espece->slug) }}"><img src="{{ Storage::disk('public')->url('espece/'.$espece->image) }}" alt=""></a>
+                            <a href=""><h3>{{ $alerte->title }}</h3></a>
+                            @foreach($alerte->especes as $espece)
+                                <a href="{{ route('espece', $espece->slug) }}"><img src="{{ Storage::disk('public')->url('espece/'.$espece->image) }}" alt=""></a>
+                            @endforeach
 
                             <div class="row">
                                 <div class="span8 post-d-info">
 
                                     <p>
-                                        {!! $espece->description !!}
+                                        {!! $alerte->body !!}
                                     </p>
                                     <div class="blue-dark">
-                                        <i class="icon-user"></i> By {{ $espece->user->nom }} <i class="icon-tag"></i> Photography | Portrait <i class="icon-comment-alt"></i> With 12 Comments
+                                        <i class="icon-user"></i> By {{ $alerte->user->nom }} <i class="icon-tag"></i> Photography | Portrait <i class="icon-comment-alt"></i> With 12 Comments
                                     </div>
 
                                 </div>
@@ -118,57 +119,7 @@
             </div>
 
             <!-- Side Bar -->
-            <div class="span3">
 
-
-                <h3>Taximonie</h3>
-
-                    <div class="progress">
-                      <div class="bar" style="width: 100%;">regne:  {{ $espece->regne }}</div>
-                    </div>
-                    <div class="progress">
-                        <div class="bar" style="width: 100%;">
-                            Embranchement :  @foreach($espece->embranchements as $embranchement)
-                                {{ $embranchement->name }}
-                            @endforeach
-                        </div>
-                    </div>
-
-                <div class="progress">
-                    <div class="bar" style="width: 100%;">
-                        Classe : @foreach($espece->classes as $classe)
-                            {{ $classe->name }}
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="progress">
-                    <div class="bar" style="width: 100%;">
-                        Ordre : @foreach($espece->ordres as $ordre)
-                            {{ $ordre->name }}
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="progress">
-                    <div class="bar" style="width: 100%;">
-                        Famille : @foreach($espece->familles as $famille)
-                            {{ $famille->name }}
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="progress">
-                    <div class="bar" style="width: 100%;">
-                        Genre : @foreach($espece->genres as $genre)
-                            {{ $genre->name }}
-                        @endforeach
-                    </div>
-                </div>
-
-
-                <div class="row space50"></div>
-            </div>
         </div>
     </div>
 </div>

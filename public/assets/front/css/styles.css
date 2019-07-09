@@ -91,12 +91,12 @@ blockquote {
 }
 
 a {
-  color:#fff;
+  color:#3b3b3b;
   text-decoration:none;
 }
 
 a:hover {
-  color:#fff;
+  color: black;
   text-decoration:none;
 }
 
@@ -123,7 +123,8 @@ img {
 }
 
 .blue-dark{
-  color:#fb8865;
+  color: #fda056;
+  font-size: 0.8em !important;
 }
 
 .bold {
@@ -541,7 +542,7 @@ header {
 }
 
 .square-1 {
-  color:#83adff;
+  color:#3b3b3b;
   padding-bottom:24px; 
 }
 

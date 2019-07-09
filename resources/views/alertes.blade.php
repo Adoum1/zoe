@@ -42,6 +42,8 @@
 <header id="header">
     <div class="container">
         @include('layouts.front.partial.header')
+        <div class="row space40"></div>
+
     </div>
 </header>
 <!-- Header End -->
@@ -53,7 +55,7 @@
     <div class="container">
 
         <div class="eight columns">
-            <h3 class="left">Espèces</h3>
+            <h3 class="left">Alertes</h3>
         </div>
 
         <div class="eight columns">
@@ -61,7 +63,7 @@
                 <ul>
                     <li>Vous êtes ici:</li>
                     <li><a href="#">Acceuil</a></li>
-                    <li>Espèces</li>
+                    <li>Alertes</li>
                 </ul>
             </nav>
         </div>
@@ -75,42 +77,58 @@
     <div class="container">
         <div class="row">
             <div class="span12">
-
+                <h3>&nbsp;</h3>
             </div>
 
             <div class="span9">
 
-                <!-- Blog Item -->
-
-                    <div class="row">
-                        <div class="span1">
-
-                        </div>
-                        <div class="span8">
-                            <a href=""><h3>{{ $espece->name }}</h3></a>
-
-                            <a href="{{ route('espece', $espece->slug) }}"><img src="{{ Storage::disk('public')->url('espece/'.$espece->image) }}" alt=""></a>
-
+                <div  class="slider2 flexslider">
+                    <ul class="slides">
+                        <li>
                             <div class="row">
-                                <div class="span8 post-d-info">
-
-                                    <p>
-                                        {!! $espece->description !!}
-                                    </p>
-                                    <div class="blue-dark">
-                                        <i class="icon-user"></i> By {{ $espece->user->nom }} <i class="icon-tag"></i> Photography | Portrait <i class="icon-comment-alt"></i> With 12 Comments
-                                    </div>
+                                @foreach($alertes as $key=>$alerte)
+                                <div>
+                                    <a href="{{ route('alerte', $alerte->slug) }}">
+                                        <div class="span3 square-1">
+                                            <div class="img-container">
+                                                @foreach($alerte->especes as $espece)
+                                                <img src="{{ Storage::disk('public')->url('espece/'.$espece->image) }}" alt="">
+                                                @endforeach
+                                                <div class="img-bg-icon"></div>
+                                            </div>
+                                            <h4>{{ $alerte->title }}</h4>
+                                            <div class="blue-dark">
+                                                <i class="icon-user"></i> Par {{ $alerte->user->nom }} <i class="icon-tag"></i> Photography | Portrait <i class="icon-comment-alt"></i> With 12 Comments
+                                            </div>
+                                            <p>  {!!  str_limit($alerte->body, '300') !!} <a href="{{ route('alerte', $alerte->slug) }}">...Lire plus</p>
+                                        </div>
+                                    </a>
 
                                 </div>
+                                @endforeach
 
                             </div>
-                        </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                <!-- Paging -->
+                <div class="row">
+                    <div class="span9">
+                        <a href="#" class="paging">&#62;</a>
+                        <a href="#" class="paging">84</a>
+                        <a href="#" class="paging">83</a>
+                        <a href="#" class="paging">82</a>
+                        <a href="#" class="paging">...</a>
+                        <a href="#" class="paging">3</a>
+                        <a href="#" class="paging">2</a>
+                        <a href="#" class="paging">1</a>
+                        <a href="#" class="paging">&#60;</a>
                     </div>
-                    <!-- Blog Item End -->
-
-                    <div class="row space40"></div>
-
-
+                </div>
+                <!-- Paging End -->
 
 
                 <div class="row space40"></div>
@@ -120,51 +138,13 @@
             <!-- Side Bar -->
             <div class="span3">
 
-
-                <h3>Taximonie</h3>
-
-                    <div class="progress">
-                      <div class="bar" style="width: 100%;">regne:  {{ $espece->regne }}</div>
-                    </div>
-                    <div class="progress">
-                        <div class="bar" style="width: 100%;">
-                            Embranchement :  @foreach($espece->embranchements as $embranchement)
-                                {{ $embranchement->name }}
-                            @endforeach
-                        </div>
-                    </div>
-
-                <div class="progress">
-                    <div class="bar" style="width: 100%;">
-                        Classe : @foreach($espece->classes as $classe)
-                            {{ $classe->name }}
-                        @endforeach
-                    </div>
+                <h3 class="p-t-0">Recherche</h3>
+                <div class="search-box">
+                    <a href="#" class="search-icon"><i class="icon-search"></i></a>
+                    <input class="search" name="" value="">
                 </div>
 
-                <div class="progress">
-                    <div class="bar" style="width: 100%;">
-                        Ordre : @foreach($espece->ordres as $ordre)
-                            {{ $ordre->name }}
-                        @endforeach
-                    </div>
-                </div>
 
-                <div class="progress">
-                    <div class="bar" style="width: 100%;">
-                        Famille : @foreach($espece->familles as $famille)
-                            {{ $famille->name }}
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="progress">
-                    <div class="bar" style="width: 100%;">
-                        Genre : @foreach($espece->genres as $genre)
-                            {{ $genre->name }}
-                        @endforeach
-                    </div>
-                </div>
 
 
                 <div class="row space50"></div>

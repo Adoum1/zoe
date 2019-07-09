@@ -26,6 +26,16 @@ Route::get('/espece/{slug}', 'InternauteController@getEspeceOne', function () {
     return view('espece');
 })->name('espece');
 
+/** Route toutes les alertes */
+Route::get('/alertes', 'InternauteController@getAlertes', function () {
+    return view('alertes');
+})->name('alertes');
+
+/** Route alerte */
+Route::get('/alerte/{slug}', 'InternauteController@getAlerteOne', function () {
+    return view('alerte');
+})->name('alerte');
+
 //Route::get('/', 'HomeController@index')->name('welcome');
 
 Auth::routes();

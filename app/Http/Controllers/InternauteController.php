@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Alerte;
 use App\Espece;
+use App\Famille;
 use Illuminate\Http\Request;
 use App\Site;
 
@@ -28,11 +30,26 @@ class InternauteController extends Controller
         */
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getEspeces()
     {
         $especes = Espece::all();
+        $familles = Famille::all();
 
-        return view('especes', compact( 'especes'));
+        return view('especes', compact( 'especes', 'familles'));
+
+    }
+
+
+    public function getAlertes(){
+        $alertes = Alerte::all();
+        $especes = Espece::all();
+
+       // $posts = Post::latest()->approved()->published()->paginate(6);
+
+        return view('alertes', compact('alertes', 'especes'));
 
     }
 
@@ -56,6 +73,16 @@ class InternauteController extends Controller
         return view('post',compact('post','randomposts'));
          */
     }
+
+    public function getAlerteOne($slug)
+    {
+        $alerte = Alerte::where('slug', $slug)->first();
+        $espece = Espece::where('slug', $slug)->first();
+
+        return view('alerte', compact( 'alerte', 'espece'));
+
+    }
+
 
 
 

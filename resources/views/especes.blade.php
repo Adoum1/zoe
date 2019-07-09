@@ -41,32 +41,7 @@
 <!-- Header -->
 <header id="header">
     <div class="container">
-        <div class="row t-container">
-
-            <!-- Logo -->
-            <div class="span3">
-                <div class="logo">
-                    <a href="index.htm"><img src="{{ asset('assets/front/img/logo-header.png') }}" alt=""></a>
-                </div>
-            </div>
-
-            <div class="span9">
-                <div class="row space60"></div>
-                <nav id="nav" role="navigation">
-                    <a href="#nav" title="Show navigation">Show navigation</a>
-                    <a href="#" title="Hide navigation">Hide navigation</a>
-                    <ul class="clearfix">
-                        <li class="active"><a href="index.htm" title="">Acceuil</a></li>
-                        <li><a href="about-us.htm" title="">Espèces</a></li>
-                        <li><a href="gallery.htm" title="">Contact</a></li>
-                        <li><a href="services.htm" title="">  ll  </a></li>
-
-                        <li><a href="services.htm" title="">Connexion</a></li>
-
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        @include('layouts.front.partial.header')
         <div class="row space40"></div>
 
     </div>
@@ -80,7 +55,7 @@
     <div class="container">
 
         <div class="eight columns">
-            <h3 class="left">Espèces</h3>
+            <h3 class="left">Taxinomie</h3>
         </div>
 
         <div class="eight columns">
@@ -88,7 +63,7 @@
                 <ul>
                     <li>Vous êtes ici:</li>
                     <li><a href="#">Acceuil</a></li>
-                    <li>Espèces</li>
+                    <li>Taxinomie</li>
                 </ul>
             </nav>
         </div>
@@ -107,37 +82,34 @@
 
             <div class="span9">
 
-                <!-- Blog Item -->
-                @foreach($especes as $key=>$espece)
-                <div class="row">
-                    <div class="span1">
+                <div  class="slider2 flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="row">
+                                @foreach($especes as $key=>$espece)
+                                <div>
+                                    <a href="{{ route('espece', $espece->slug) }}">
+                                        <div class="span3 square-1">
+                                            <div class="img-container">
+                                                <img src="{{ Storage::disk('public')->url('espece/'.$espece->image) }}" alt="">
+                                                <div class="img-bg-icon"></div>
+                                            </div>
+                                            <h4>{{ $espece->name }}</h4>
+                                            <div class="blue-dark">
+                                                <i class="icon-user"></i> Par {{ $espece->user->nom }} <i class="icon-tag"></i> Photography | Portrait <i class="icon-comment-alt"></i> With 12 Comments
+                                            </div>
+                                            <p>  {!!  str_limit($espece->description, '300') !!} <a href="{{ route('espece', $espece->slug) }}">...Lire plus</p>
+                                        </div>
+                                    </a>
 
-                        <div class="blog-icon">
-                           <button>Lancer une alerte</button>
-                        </div>
-
-                    </div>
-                    <div class="span8">
-                        <a href="{{ route('espece', $espece->slug) }}"><img src="{{ Storage::disk('public')->url('espece/'.$espece->image) }}" alt=""></a>
-
-                        <div class="row">
-                            <div class="span8 post-d-info">
-                                <a href="blog-detail.htm"><h3>{{ $espece->name }}</h3></a>
-                                <div class="blue-dark">
-                                    <i class="icon-user"></i> By {{ $espece->user->nom }} <i class="icon-tag"></i> Photography | Portrait <i class="icon-comment-alt"></i> With 12 Comments
                                 </div>
-                                <p>
-                                    {!!  str_limit($espece->description, '300') !!} <a href="{{ route('espece', $espece->slug) }}">...Lire plus</a>
-                                </p>
+                                @endforeach
+
                             </div>
+                        </li>
 
-                        </div>
-                    </div>
+                    </ul>
                 </div>
-                <!-- Blog Item End -->
-
-                <div class="row space40"></div>
-                @endforeach
 
 
                 <!-- Paging -->
@@ -156,6 +128,7 @@
                 </div>
                 <!-- Paging End -->
 
+
                 <div class="row space40"></div>
 
             </div>
@@ -166,46 +139,13 @@
                 <h3 class="p-t-0">Recherche</h3>
                 <div class="search-box">
                     <a href="#" class="search-icon"><i class="icon-search"></i></a>
-                    <input class="search" name="" value="Search">
+                    <input class="search" name="" value="">
                 </div>
 
-                <h3>Classes</h3>
-                <a href="#"><div class="tag">WordPress</div></a>
-                <a href="#"><div class="tag">Webdesign</div></a>
-                <a href="#"><div class="tag">Post-processing</div></a>
-                <a href="#"><div class="tag">Tourism</div></a>
-                <a href="#"><div class="tag">Rendering</div></a>
-                <a href="#"><div class="tag">Photography</div></a>
-
-                <h3>Latest Tweets</h3>
-                <i class="icon-twitter"></i> Saying "Wow, You're cool." when you see someone doing something stupid. <a href="#" rel="external">http://t.co/YywnqBb8</a><br>
-                6 minutes ago
-                <br><br>
-                <i class="icon-twitter"></i> Are you getting ready to work on a new project, take off on a sales trip.
-                <a href="#" rel="external">http://pic.witt.com.co/Uyoyyk#sp</a><br>
-                33 minutes ago
-
-                <h3>Photos From Flickr</h3>
-                <div class="flickr-widget">
-                    <div class="photo-stream">
-                        <img src="img/stream/01.jpg" alt="">
-                    </div>
-                    <div class="photo-stream">
-                        <img src="img/stream/02.jpg" alt="">
-                    </div>
-                    <div class="photo-stream">
-                        <img src="img/stream/03.jpg" alt="">
-                    </div>
-                    <div class="photo-stream">
-                        <img src="img/stream/04.jpg" alt="">
-                    </div>
-                    <div class="photo-stream">
-                        <img src="img/stream/05.jpg" alt="">
-                    </div>
-                    <div class="photo-stream">
-                        <img src="img/stream/06.jpg" alt="">
-                    </div>
-                </div>
+                <h3>Familles</h3>
+                @foreach($familles as $key=>$famille)
+                <a href="#"><div class="tag">{{ $famille->name }}</div></a>
+                @endforeach
 
 
                 <div class="row space50"></div>

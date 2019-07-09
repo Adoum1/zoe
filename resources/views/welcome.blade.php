@@ -16,7 +16,7 @@
     <![endif]-->
 
     <!-- Favicon -->
-    <link href="{{ asset('assets/front/img/favicon.ico') }}" rel="icon" type="image/png">
+    <link href="{{ asset('assets/front/img/log-zoe.png') }}" rel="icon" type="image/png">
 
     <!-- Styles -->
     <link href="{{ asset('assets/front/css/styles.css') }}" rel="stylesheet">
@@ -38,62 +38,23 @@
 
 </head>
 <body>
-<!-- Header -->
-<header id="header">
-    <div class="container">
-        <div class="row t-container">
-
-            <!-- Logo -->
-            <div class="span3">
-                <div class="logo">
-                    <a href="index.htm"><img src="{{ asset('assets/front/img/logo-header.png') }}" alt=""></a>
-                </div>
-            </div>
-
-            <div class="span9">
-                <div class="row space60"></div>
-                <nav id="nav" role="navigation">
-                    <a href="#nav" title="Show navigation">Show navigation</a>
-                    <a href="#" title="Hide navigation">Hide navigation</a>
-                    <ul class="clearfix">
-                        <li class="active"><a href="index.htm" title="">Acceuil</a></li>
-                        <li><a href="about-us.htm" title="">Espèces</a></li>
-                        <li><a href="gallery.htm" title="">Contact</a></li>
-                        <li><a href="services.htm" title="">  ll  </a></li>
-
-                        <li><a href="services.htm" title="">Connexion</a></li>
-
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="row space40"></div>
-        <div class="slider1 flexslider">  <!-- Slider -->
-            <ul class="slides">
-                <li>
-                    <img src="{{ asset('assets/front/img/slider/1.jpg') }}" alt="">
-                </li>
-                <li>
-                    <img src="{{ asset('assets/front/img/slider/2.jpg') }}" alt="">
-                </li>
-                <li>
-                    <img src="{{ asset('assets/front/img/slider/3.jpg') }}" alt="">
-                </li>
-                <li>
-                    <img src="{{ asset('assets/front/img/slider/4.jpg') }}" alt="">
-                </li>
-            </ul>
-        </div>  <!-- Slider End -->
-    </div>
-</header>
-<!-- Header End -->
+@include('layouts.front.partial.slider')
 <!-- Content -->
 <div id="content">
     <div class="container">
         <div class="f-center">
-            <h2>why choose us ?</h2>
+            <h2>Qui sommes nous ?</h2>
             <div class="head-info">
-                Magna in pulvinar tempor montes pulvinar habitasse parturient? Elementum facilisis sit et, dolor placerat, turpis auctor. Lundium ultricies augue urna arcu aliquet velit?
+               Notre histoire est née il y a 20 ans sur un campus de France de la volonté de quelques amis dépités par l'incapicité de nos gouvernements à prendre
+                à prendre les décisions pour limiter les effets néfastes de l'activité de humaine sur l'environnement de vie sur terre.
+                <br>
+                devant l'urgence et la criticité de la situation et en dignes héritiers de la pensée colibri, nous avons pensé un ambitieux programme de sauvetage d'espèces
+                vivantes menacées de disparition: <strong>ZOE</strong>.
+                brNous avons réussi le challenge de rallier à notre cause un grand nombre de personnes. Nous avons pu
+                imaginer et valider un un processus citoyen pour sécourir les espèces menacées.
+                La levée de fonds qui a suivi été un franc succes.
+                <br>
+
             </div>
         </div>
         <div class="f-hr"></div>
@@ -106,48 +67,48 @@
                         <!-- Service Icon -->
                         <div class="ic-1"><i class="icon-lightbulb"></i></div>
                         <!-- Service Title -->
-                        <div class="title-1"><h4>Powerful clean design</h4></div>
+                        <div class="title-1"><h4>ADN</h4></div>
                         <!-- Service Content -->
                         <div class="text-1">
-                            On sait depuis longake apple pie. Gingerbread cotton candy icing ice cream applicake wafetemps nnaire de plus de 200 mots pluskan rlatin
+                            <strong>ZOE</strong> adopte une approche globaliste prenant en compte l’interdépendance entre l'état de la planète et le développement humain.
                         </div>
                     </div>
                     <!-- Service Container End -->
                     <div class="span4">
                         <div class="ic-1"><i class="icon-resize-small"></i></div>
-                        <div class="title-1"><h4>Fully responsive</h4></div>
+                        <div class="title-1"><h4>Organisation</h4></div>
                         <div class="text-1">
-                            Iil utilise un dictionnaire de plus de 200 mots kan rlarem as Ipsumtiotins, en combiake apple pie. Gingerbread icing ice cream applicake wafenaison.
+                            <strong>ZOE</strong> est une fondation indépendante de droit France impliquée à l'échelle mondiale dans la protection de l'environnement.
                         </div>
                     </div>
                     <div class="span4">
                         <div class="ic-1"><i class="icon-eye-open"></i></div>
-                        <div class="title-1"><h4>Retina Ready</h4></div>
+                        <div class="title-1"><h4>Finance</h4></div>
                         <div class="text-1">
-                            Contrairement à une opinion répandue, Lorem as Ipsumtionnaire de plus n'est pas simplake apple pie. Gingerbread cotton  ice cream applicake wafeement.
+                            Grâce à votre mobilisation et votre générosité, <lstrong>ZOE</lstrong> a vu ses leviers d’action renforcés : plus de possibilités de programmes sur le terrain, .
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="span12">
-                <h2>We have provide best consulting service</h2>
+                <h2>Equipe</h2>
             </div>
             <div class="span8">
-                <img src="img/image01.png" alt="">
+                <img src="{{ asset('assets/front/img/image01.png') }}" alt="">
             </div>
             <div class="span4">
                 <div class="ic-1"></div>
-                <div class="title-1"><h4>Our Service:</h4></div>
+                <div class="title-1"><h4>Nos sites:</h4></div>
                 <!-- List -->
                 <div class="text-1">
                     <ul class="list-b">
                         <!-- List Items -->
-                        <li><i class="icon-ok"></i> Tax Consulting.</li>
-                        <li><i class="icon-ok"></i> Business Consulting.</li>
-                        <li><i class="icon-ok"></i> Data analysis methods.</li>
-                        <li><i class="icon-ok"></i> On demand consulting.</li>
-                        <li><i class="icon-ok"></i> Private consultant.</li>
+                        <li><i class="icon-ok"></i> Lille</li>
+                        <li><i class="icon-ok"></i> Dax</li>
+                        <li><i class="icon-ok"></i> Annecy</li>
+
                     </ul>
                 </div>
                 <!-- List End -->
@@ -157,83 +118,123 @@
 
         <div class="space40"></div>
 
+        <!-- Typography Row -->
+        <div class="row t-row">
+            <!-- Line -->
+            <div class="span12"><hr></div>
+            <div class="span9">
+                <h2>Faire un don</h2>
+            </div>
+            <div class="span3">
+                <!-- Button -->
+                <div class="btn btn-blue f-right">
+                    <!-- Title -->
+                    <h6><i class="icon-signin hidden-tablet"></i> Don</h6>
+                </div>
+            </div>
+            <div class="space30 visible-phone"></div>
+            <!-- Line -->
+            <div class="span12"><hr></div>
+        </div>
+        <!-- Typography Row End-->
+
+
         <!-- Our Clients -->
         <div class="row">
             <div class="span12">
-                <h3>Our Clients</h3>
+                <h3>Nos parteneaires</h3>
             </div>
         </div>
 
-        <div id="our-clients" class="slider2 flexslider">
+        <div  class="slider2 flexslider">
             <ul class="slides">
                 <li>
                     <div class="row">
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/1.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/2.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/3.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/4.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/5.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/6.png" alt="">
-                            </a>
-                        </div>
+
+                        <a href="#">
+                            <div class="span3 square-1">
+                                <div class="img-container">
+                                    <img src="{{ asset('assets/front/img/part1.png') }}" alt="">
+                                    <div class="img-bg-icon"></div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="span3 square-1">
+                                <div class="img-container">
+                                    <img src="{{ asset('assets/front/img/part2.png') }}" alt="">
+                                    <div class="img-bg-icon"></div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="span3 square-1">
+                                <div class="img-container">
+                                    <img src="{{ asset('assets/front/img/part3.png') }}" alt="">
+                                    <div class="img-bg-icon"></div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="span3 square-1">
+                                <div class="img-container">
+                                    <img src="{{ asset('assets/front/img/part4.png') }}" alt="">
+                                    <div class="img-bg-icon"></div>
+                                </div>
+                            </div>
+                        </a>
+
+
+
                     </div>
                 </li>
                 <li>
                     <div class="row">
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/4.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/3.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/1.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/2.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/5.png" alt="">
-                            </a>
-                        </div>
-                        <div class="span2">
-                            <a href="#" rel="external">
-                                <img src="img/our-clients/6.png" alt="">
-                            </a>
-                        </div>
+
+                        <a href="#">
+                            <div class="span3 square-1">
+                                <div class="img-container">
+                                    <img src="{{ asset('assets/front/img/part1.png') }}" alt="">
+                                    <div class="img-bg-icon"></div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="span3 square-1">
+                                <div class="img-container">
+                                    <img src="{{ asset('assets/front/img/part2.png') }}" alt="">
+                                    <div class="img-bg-icon"></div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="span3 square-1">
+                                <div class="img-container">
+                                    <img src="{{ asset('assets/front/img/part3.png') }}" alt="">
+                                    <div class="img-bg-icon"></div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="span3 square-1">
+                                <div class="img-container">
+                                    <img src="{{ asset('assets/front/img/part4.png') }}" alt="">
+                                    <div class="img-bg-icon"></div>
+                                </div>
+                            </div>
+                        </a>
+
+
+
                     </div>
                 </li>
+
             </ul>
         </div>
         <!-- Our Clients End -->
@@ -245,69 +246,7 @@
 <!-- Content End -->
 
 <!-- Footer -->
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="span5">
-                <h3>Contact Form</h3>
-                <div>
-                    <form class="form-main" name="ajax-form" id="ajax-form" action="#" method="post">
-                        <div id="ajaxsuccess">E-mail was successfully sent.</div>
-                        <div class="error" id="err-name">Please enter name</div>
-                        <input name="name" id="name" type="text" value="Name" onfocus="if(this.value == 'Name') this.value='';" onblur="if(this.value == '') this.value='Name';">
-
-                        <div class="error" id="err-email">Please enter e-mail</div>
-                        <div class="error" id="err-emailvld">E-mail is not a valid format</div>
-                        <input  name="email" id="email" type="text" value="E-mail" onfocus="if(this.value == 'E-mail') this.value='';" onblur="if(this.value == '') this.value='E-mail';">
-
-                        <div class="error" id="err-message">Please enter message</div>
-                        <textarea  name="message" id="message" onfocus="if(this.value == 'Message') this.value='';" onblur="if(this.value == '') this.value='Message';">Message</textarea><br>
-                        <div>
-                            <div class="error" id="err-form">There was a problem validating the form please check!</div>
-                            <div class="error" id="err-timedout">The connection to the server timed out!</div>
-                            <div class="error" id="err-state"></div>
-                        </div>
-                        <button id="send" class="btn f-right">Send Message <i class="icon-ok"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="span3 offset3">
-                <h3>Address</h3>
-                81 Sunnyvale Street<br>
-                Los Angeles, CA 90185<br>
-                United States<br>
-                <br>
-                <i class="icon-phone"></i>+01 880 555 999<br>
-                <i class="icon-envelope"></i><a href="mailto:support@example.com">support@example.com</a><br>
-                <i class="icon-home"></i><a href="#">www.example.com</a>
-
-                <div class="row space40"></div>
-
-                <a href="#" class="social-network sn2 behance"></a>
-                <a href="#" class="social-network sn2 facebook"></a>
-                <a href="#" class="social-network sn2 pinterest"></a>
-                <a href="#" class="social-network sn2 flickr"></a>
-                <a href="#" class="social-network sn2 dribbble"></a>
-                <a href="#" class="social-network sn2 lastfm"></a>
-                <a href="#" class="social-network sn2 forrst"></a>
-                <a href="#" class="social-network sn2 xing"></a>
-            </div>
-        </div>
-
-        <div class="row space50"></div>
-        <div class="row">
-            <div class="span6">
-                <div class="logo-footer">
-                    Design by <a href="https://www.freshdesignweb.com">freshDesignweb</a>
-                </div>
-            </div>
-            <div class="span6 right">
-                &copy; 2020. All rights reserved.
-            </div>
-        </div>
-
-    </div>
-</footer>
+    @include('layouts.front.partial.footer')
 <!-- Footer End -->
 
 <!-- JavaScripts -->
