@@ -51,11 +51,17 @@ class StockageController extends Controller
 
 
         $this->validate($request, [
-           'name' => 'required',
+           'name' => 'required|unique:stockages',
             'description' => 'required',
             //'status' => 'required',
            // 'condition' => 'required',
+        ],[
+            'name.unique' => 'Ce stockage existe déja.',
+            'libelle.required' => 'Le libellé est obligatoire.',
+            'description.required' => 'La description est obligatoire.',
         ]);
+
+
 
 
         /**
@@ -81,7 +87,7 @@ class StockageController extends Controller
 
 
 
-        Toastr::success('Structure de stockage créé :)', 'Success');
+        Toastr::success('Structure de stockage créé :)', 'GESTION DES SITES DE STOCKAGE');
 
         return redirect()->route('admin.stockage.index');
 
@@ -134,7 +140,12 @@ class StockageController extends Controller
             'description' => 'required',
             //'status' => 'required',
             // 'condition' => 'required',
+        ],[
+           // 'name.unique' => 'Ce stockage existe déja.',
+            'libelle.required' => 'Le libellé est obligatoire.',
+            'description.required' => 'La description est obligatoire.',
         ]);
+
 
 
         /**
@@ -160,7 +171,7 @@ class StockageController extends Controller
 
 
 
-        Toastr::success('Structure de stockage mise à jour :)', 'Success');
+        Toastr::success('Structure de stockage mise à jour :)', 'GESTION DES SITES DE STOCKAGE');
 
         return redirect()->route('admin.stockage.index');
 
@@ -179,7 +190,7 @@ class StockageController extends Controller
         $stockage->delete();
 
 
-        Toastr::success('Structure de stockage supprimée', 'Suppresion');
+        Toastr::success('Structure de stockage supprimée', 'GESTION DES SITES DE STOCKAGE');
 
         return redirect()->back();
     }

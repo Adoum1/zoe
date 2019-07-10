@@ -44,7 +44,7 @@
                         @csrf
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" id="name" name="name" class="form-control">
+                                <input type="text" id="name" name="name" class="form-control" {{ old('name') }}>
                                 <label class="form-label">Nom de la classe</label>
                             </div>
                         </div>

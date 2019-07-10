@@ -6,7 +6,6 @@ use App\Alerte;
 use App\Classe;
 use App\Espece;
 use Brian2694\Toastr\Facades\Toastr;
-use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -56,17 +55,26 @@ class AlerteController extends Controller
          */
 
         $this->validate($request, [
-            'title' => 'required',
+            'title' => 'required|unique:alertes',
             'body'  => 'required',
             'level' =>  'required',
             'especes' => 'required',
+        ],[
+            'title.unique' => 'Une alerte existe déja avec ce titre.',
+            'title.required' => 'Le titre de l alerte est obligatoire.',
+            'body.required' => 'La description de l alerte est obligatoire.',
+            'level.required' => 'Le niveau de l alerte est obligatoire.',
+            'especes.required' => 'Il faut obligatoirement ajouter une espèce à l alaerte.',
+
         ]);
 
 
         $alerte = new Alerte();
         $alerte->user_id = Auth::id();
         $alerte->title = ucfirst($request->title);
+        //$slug = str_slug($request->title);
         $slug = Str::slug($request->title);
+        $alerte->slug = $slug;
         $alerte->body = $request->body;
         $alerte->level = $request->level;
 
@@ -82,7 +90,7 @@ class AlerteController extends Controller
 
 
 
-        Toastr::success('Alerte créée :)', 'Success');
+        Toastr::success('Alerte créée :)', 'GESTION DES ALERTES');
 
         return redirect()->route('admin.alerte.index');
 
@@ -132,8 +140,15 @@ class AlerteController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body'  => 'required',
-           // 'level' =>  'required',
+            'level' =>  'required',
             'especes' => 'required',
+        ],[
+           // 'title.unique' => 'Une alerte existe déja avec ce titre.',
+            'title.required' => 'Le titre de l alerte est obligatoire.',
+            'body.required' => 'La description de l alerte est obligatoire.',
+            'level.required' => 'Le niveau de l alerte est obligatoire.',
+            'especes.required' => 'Il faut obligatoirement ajouter une espèce à l alaerte.',
+
         ]);
 
 
@@ -156,7 +171,7 @@ class AlerteController extends Controller
         $alerte->especes()->sync($request->especes);
 
 
-        Toastr::success('Alerte MAJ :)', 'Success');
+        Toastr::success('Alerte mise à jour :)', 'GESTION DES ALERTES');
 
         return redirect()->route('admin.alerte.index');
     }
@@ -172,7 +187,7 @@ class AlerteController extends Controller
         $alerte->especes()->detach();
         $alerte->delete();
 
-        Toastr::success('Alerte supprimée !!', 'Success');
+        Toastr::success('Alerte supprimée !!', 'GESTION DES ALERTES');
 
         return redirect()->back();
     }

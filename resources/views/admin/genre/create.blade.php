@@ -44,7 +44,7 @@
                         @csrf
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" id="name" name="name" class="form-control">
+                                <input type="text" id="name" name="name" class="form-control" value="{{ old('email') }}">
                                 <label class="form-label">Nom de la genre</label>
                             </div>
                         </div>

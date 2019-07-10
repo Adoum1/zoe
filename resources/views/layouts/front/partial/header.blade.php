@@ -24,9 +24,9 @@
             <ul class="clearfix">
                 <li class="active"><a href="{{ route('home') }}" title="">Acceuil</a></li>
                 <li><a href="{{ route('especes') }}" title="">Taximonie</a></li>
-                <li><a href="about-us.htm" title="">Alertes</a></li>
-                <li><a href="about-us.htm" title="">Projets de sauvetage</a></li>
-                <li><a href="gallery.htm" title="">Livre du sauvetage</a></li>
+                <li><a href="{{ route('alertes') }}" title="">Alertes</a></li>
+                <li><a href="#" title="">Projets de sauvetage</a></li>
+                <li><a href="#" title="">Livre du sauvetage</a></li>
 
             </ul>
         </nav>

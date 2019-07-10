@@ -45,7 +45,7 @@
                                     <b>Nom du salarié</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="nom" name="nom" class="form-control">
+                                    <input type="text" id="nom" name="nom" class="form-control" value="{{ old('nom') }}">
                                     <label class="form-label">Nom du salarié</label>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                     <b>Prénom du salarié</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="prenom" name="prenom" class="form-control">
+                                    <input type="text" id="prenom" name="prenom" class="form-control" value="{{ old('prenom') }}">
                                     <label class="form-label">Prénom du salarié</label>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <label for="sexe">Sexe</label>
-                                    <select name="sexe" id="sexe" class="form-control show-tick" data-live-search="true">
+                                    <select name="sexe" id="sexe" class="form-control show-tick" data-live-search="true" value="{{ old('sexe') }}">
                                             <option value="Masculin">Masculin</option>
                                             <option value="Feminin">Feminin</option>
                                     </select>
@@ -78,7 +78,7 @@
                                     <b>Adresse</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="adresse" name="adresse" class="form-control">
+                                    <input type="text" id="adresse" name="adresse" class="form-control" value="{{ old('adresse') }}">
                                     <label class="form-label">Adresse</label>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                     <b>Poste</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="poste" name="poste" class="form-control">
+                                    <input type="text" id="poste" name="poste" class="form-control" value="{{ old('poste') }}">
                                     <label class="form-label">Poste du salarié</label>
                                 </div>
                             </div>

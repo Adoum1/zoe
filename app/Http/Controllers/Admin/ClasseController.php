@@ -41,7 +41,13 @@ class ClasseController extends Controller
     {
         $this->validate($request,[
             'name' => 'required'
+        ],[
+            'name.unique' => 'Cette classe existe déja.',
+            'name.required' => 'Le nom de la classe est obligatoire.',
+
         ]);
+
+
 
         //return $request;
 
@@ -50,7 +56,7 @@ class ClasseController extends Controller
         $classe-> slug = Str::slug($request->name);
         $classe->save();
 
-        Toastr::success('Classe ajoutée.', 'Success');
+        Toastr::success('Classe ajoutée.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.classe.index');
     }
@@ -89,6 +95,10 @@ class ClasseController extends Controller
     {
         $this->validate($request,[
             'name' => 'required'
+        ],[
+            //'name.unique' => 'Cette classe existe déja.',
+            'name.required' => 'Le nom de la classe est obligatoire.',
+
         ]);
 
         //return $request
@@ -98,7 +108,7 @@ class ClasseController extends Controller
         $classe-> slug = Str::slug($request->name);
         $classe->save();
 
-        Toastr::success('Classe modifiée.', 'Success');
+        Toastr::success('Classe modifiée.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.classe.index');
     }
@@ -112,7 +122,7 @@ class ClasseController extends Controller
     public function destroy($id)
     {
         Classe::find($id)->delete();
-        Toastr::success('Classe successfully Deleted', 'Suppression Classe');
+        Toastr::success('Classe supprimée', 'GESTION DE LA TAXINOMIE ');
 
         return redirect()->back();
     }

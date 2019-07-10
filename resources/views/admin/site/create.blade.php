@@ -45,7 +45,7 @@
                                     <b>Nom du site</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="nom" name="nom" class="form-control">
+                                    <input type="text" id="nom" name="nom" class="form-control" value="{{ old('nom') }}">
                                     <label class="form-label">Nom du site</label>
                                 </div>
                             </div>

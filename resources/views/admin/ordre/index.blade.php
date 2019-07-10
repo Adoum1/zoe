@@ -158,24 +158,24 @@
             })
 
             swalWithBootstrapButtons.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'ATTENTION SUPPRESSION',
+                text: "Etes vous sur de vouloir supprimer ?",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
+                confirmButtonText: 'Oui, supprimer',
+                cancelButtonText: 'Non, annuler !',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
-                   // event.preventDefault();
+                    // event.preventDefault();
                     document.getElementById('delete-form-'+id).submit();
                 } else if (
                     // Read more about handling dismissals
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
                     swalWithBootstrapButtons.fire(
-                        'Cancelled',
-                        'Your data is safe :)',
+                        'ANNULATION',
+                        'Données sauvegardées  :)',
                         'error'
                     )
                 }

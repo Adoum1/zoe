@@ -41,7 +41,13 @@ class FamilleController extends Controller
     {
         $this->validate($request,[
             'name' => 'required'
+        ],[
+            'name.unique' => 'Cette famille existe déja.',
+            'name.required' => 'Le nom de la famille est obligatoire.',
+
         ]);
+
+
 
         //return $request;
 
@@ -50,7 +56,7 @@ class FamilleController extends Controller
         $famille-> slug = Str::slug($request->name);
         $famille->save();
 
-        Toastr::success('Famille ajoutée.', 'Success');
+        Toastr::success('Famille ajoutée.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.famille.index');
     }
@@ -89,8 +95,11 @@ class FamilleController extends Controller
     {
         $this->validate($request,[
             'name' => 'required'
-        ]);
+        ],[
+            //'name.unique' => 'Cette famille existe déja.',
+            'name.required' => 'Le nom de la famille est obligatoire.',
 
+        ]);
         //return $request;
 
         $famille = Famille::find($id);
@@ -98,7 +107,7 @@ class FamilleController extends Controller
         $famille-> slug = Str::slug($request->name);
         $famille->save();
 
-        Toastr::success('Famille modifiée.', 'Success');
+        Toastr::success('Famille modifiée.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.famille.index');
     }
@@ -112,7 +121,7 @@ class FamilleController extends Controller
     public function destroy($id)
     {
         Famille::find($id)->delete();
-        Toastr::success('Famille successfully Deleted', 'Suppression Tag');
+        Toastr::success('Famille supprimée', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->back();
     }

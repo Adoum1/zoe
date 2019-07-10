@@ -46,7 +46,7 @@
                                     <b>Libellé de la structure de stockage</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="name" name="name" class="form-control">
+                                    <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}">
                                     <label class="form-label">Libellé de la structure de stockage</label>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                                 <p>
                                     <b>Description</b>
                                 </p>
-                                <textarea name="description" id="tinymce" cols="10" rows="10"></textarea>
+                                <textarea name="description" id="tinymce" cols="10" rows="10">{!! old('description')  !!}</textarea>
                             </div>
 
                         </div>
@@ -96,7 +96,7 @@
                             <div class="form-group form-float">
                                 <div class="form-line {{ $errors->has('conditions') ? 'focused error' : '' }}">
                                     <label for="site">Conditions de stockage</label>
-                                    <select name="conditions[]" id="conditions" class="form-control show-tick" data-live-search="true" multiple>
+                                    <select name="conditions[]" id="condition" class="form-control show-tick" data-live-search="true" multiple>
                                         @foreach($conditions as $condition)
                                             <option value="{{ $condition->id }}">{{ $condition->name }}</option>
                                         @endforeach

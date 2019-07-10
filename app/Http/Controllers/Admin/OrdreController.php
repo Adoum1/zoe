@@ -40,7 +40,11 @@ class OrdreController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required'
+            'name' => 'required|string|max:255|unique:genres',
+        ],[
+            'name.unique' => 'Cet ordre existe déja.',
+            'name.required' => 'Le nom de l ordre est obligatoire.',
+
         ]);
 
         //return $request;
@@ -50,7 +54,7 @@ class OrdreController extends Controller
         $ordre-> slug = Str::slug($request->name);
         $ordre->save();
 
-        Toastr::success('Ordre ajoutée.', 'Success');
+        Toastr::success('Ordre ajouté.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.ordre.index');
     }
@@ -89,7 +93,12 @@ class OrdreController extends Controller
     {
         $this->validate($request,[
             'name' => 'required'
+        ],[
+            //'name.unique' => 'Cet ordre existe déja.',
+            'name.required' => 'Le nom de l ordre est obligatoire.',
+
         ]);
+
 
         //return $request;
 
@@ -98,7 +107,7 @@ class OrdreController extends Controller
         $ordre-> slug = Str::slug($request->name);
         $ordre->save();
 
-        Toastr::success('Ordre modifiée.', 'Success');
+        Toastr::success('Ordre modifié.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.ordre.index');
     }
@@ -112,7 +121,7 @@ class OrdreController extends Controller
     public function destroy($id)
     {
         Ordre::find($id)->delete();
-        Toastr::success('Ordre successfully Deleted', 'Suppression Tag');
+        Toastr::success('Ordre supprimé', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->back();
     }

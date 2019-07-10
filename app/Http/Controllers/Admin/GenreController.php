@@ -41,7 +41,13 @@ class GenreController extends Controller
     {
         $this->validate($request,[
             'name' => 'required'
+        ],[
+            'name.unique' => 'Ce genre existe déja.',
+            'name.required' => 'Le nom du genre est obligatoire.',
+
         ]);
+
+
 
         //return $request;
 
@@ -50,7 +56,7 @@ class GenreController extends Controller
         $genre-> slug = Str::slug($request->name);
         $genre->save();
 
-        Toastr::success('Genre ajoutée.', 'Success');
+        Toastr::success('Genre ajouté.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.genre.index');
     }
@@ -89,6 +95,10 @@ class GenreController extends Controller
     {
         $this->validate($request,[
             'name' => 'required'
+        ],[
+            //'name.unique' => 'Ce genre existe déja.',
+            'name.required' => 'Le nom du genre est obligatoire.',
+
         ]);
 
         //return $request;
@@ -98,7 +108,7 @@ class GenreController extends Controller
         $genre-> slug = Str::slug($request->name);
         $genre->save();
 
-        Toastr::success('Genre modifiée.', 'Success');
+        Toastr::success('Genre modifié.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.genre.index');
     }
@@ -112,7 +122,7 @@ class GenreController extends Controller
     public function destroy($id)
     {
         Genre::find($id)->delete();
-        Toastr::success('Genre successfully Deleted', 'Suppression Tag');
+        Toastr::success('Genre supprimé', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->back();
     }

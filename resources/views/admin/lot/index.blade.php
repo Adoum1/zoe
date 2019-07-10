@@ -184,12 +184,12 @@
             })
 
             swalWithBootstrapButtons.fire({
-                title: 'Etes vous sur?',
-                text: "Voulez-vous vraiment supprimer cet espèce",
+                title: 'ATTENTION SUPPRESSION',
+                text: "Etes vous sur de vouloir supprimer ?",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Oui, supprimer',
-                cancelButtonText: 'Non, annuler!',
+                cancelButtonText: 'Non, annuler !',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
@@ -200,8 +200,8 @@
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
                     swalWithBootstrapButtons.fire(
-                        'Cancelled',
-                        'Your data is safe :)',
+                        'ANNULATION',
+                        'Données sauvegardées  :)',
                         'error'
                     )
                 }

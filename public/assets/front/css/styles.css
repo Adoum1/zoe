@@ -917,7 +917,7 @@ table a:hover{
   width:95%;
   padding:16px 12px 14px 12px; 
   margin-top:10px;
-  background:#464646;
+  background:#e1c5c5;
   border-radius:0px;
   border:0px;
 }
@@ -928,7 +928,7 @@ table a:hover{
 }
 
 .error {
-	color: white;
+	color: #ff8265;
 	display: none;
 }
 

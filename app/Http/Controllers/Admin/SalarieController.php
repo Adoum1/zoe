@@ -57,6 +57,13 @@ class SalarieController extends Controller
            'poste'  => 'required',
           'sexe'    => 'required'
           // 'adresse' => 'required',
+        ],[
+            //'nom.unique' => 'Cet ordre existe déja.',
+            'nom.required' => 'Le nom du salarié est obligatoire.',
+            'prenom.required' => 'Le prenom du salarié est obligatoire.',
+            'poste.required' => 'Le poste du salarié est obligatoire.',
+            'sexe.required' => 'Le sexe du salarié est obligatoire.',
+
         ]);
 
         /**
@@ -75,7 +82,7 @@ class SalarieController extends Controller
 
         $salarie->sites()->attach($request->sites);
 
-        Toastr::success('Salarié ajouté.', 'CREATION SALARIE');
+        Toastr::success('Salarié ajouté.', 'GESTION DES SALARIES');
 
         return redirect()->route('admin.salarie.index');
 
@@ -127,6 +134,13 @@ class SalarieController extends Controller
             'poste'  => 'required',
             //'sexe'   => 'sexe',
             // 'adresse' => 'required',
+        ],[
+            //'nom.unique' => 'Cet ordre existe déja.',
+            'nom.required' => 'Le nom du salarié est obligatoire.',
+            'prenom.required' => 'Le prenom du salarié est obligatoire.',
+            'poste.required' => 'Le poste du salarié est obligatoire.',
+           // 'sexe.required' => 'Le sexe du salarié est obligatoire.',
+
         ]);
 
         /**
@@ -143,7 +157,7 @@ class SalarieController extends Controller
         $salarie->save();
         $salarie->sites()->sync($request->sites);
 
-        Toastr::success('Salarié mise à jour.', 'MAJ SALARIE');
+        Toastr::success('Salarié mise à jour.', 'GESTION DES SALARIES');
 
         return redirect()->route('admin.salarie.index');
     }
@@ -161,7 +175,7 @@ class SalarieController extends Controller
         $salarie->delete();
 
 
-        Toastr::success('Salarié supprimé', 'Suppresion');
+        Toastr::success('Salarié supprimé', 'GESTION DES SALARIES');
 
         return redirect()->back();
     }

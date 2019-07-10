@@ -40,17 +40,22 @@ class EmbranchementController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required'
+            'name' => 'required|string|max:255|unique:embranchements',
+        ],[
+            'name.unique' => 'Cet Embranchement existe déja.',
+            'name.required' => 'Le nom de l embranchement est obligatoire.',
+
         ]);
+
 
         //return $request;
 
         $embranchement = new Embranchement();
-        $embranchement->name = $request->name;
+        $embranchement->name = ucfirst($request->name);
         $embranchement-> slug = Str::slug($request->name);
         $embranchement->save();
 
-        Toastr::success('Embranchement ajoutée.', 'Success');
+        Toastr::success('Embranchement ajoutée.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.embranchement.index');
     }
@@ -88,8 +93,13 @@ class EmbranchementController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name' => 'required'
+            'name' => 'required|string|max:255',
+        ],[
+            //'name.unique' => 'Cet Embranchement existe déja.',
+            'name.required' => 'Le nom de l embranchement est obligatoire.',
+
         ]);
+
 
         //return $request;
 
@@ -98,7 +108,7 @@ class EmbranchementController extends Controller
         $embranchement-> slug = Str::slug($request->name);
         $embranchement->save();
 
-        Toastr::success('Embranchement modifiée.', 'Success');
+        Toastr::success('Embranchement modifié.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.embranchement.index');
     }
@@ -112,7 +122,7 @@ class EmbranchementController extends Controller
     public function destroy($id)
     {
         Embranchement::find($id)->delete();
-        Toastr::success('Embranchement successfully Deleted', 'Suppression Tag');
+        Toastr::success('Embranchement supprimé.', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->back();
     }

@@ -70,7 +70,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nom</th>
-                                    <th>Nbre Posts</th>
+                                    <th>Nbre Espèces</th>
                                     <th>Date de création</th>
                                     <th>Date de MAJ</th>
                                     <th>Action</th>
@@ -80,7 +80,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nom</th>
-                                    <th>Nbre Posts</th>
+                                    <th>Nbre Espèces</th>
                                     <th>Date de création</th>
                                     <th>Date de MAJ</th>
                                     <th>Action</th>
@@ -92,7 +92,7 @@
                                        <tr>
                                            <td>{{ $key + 1 }}</td>
                                            <td>{{ $classe->name }}</td>
-                                           <td><span class="badge bg-primary">8</span></td>
+                                           <td><span class="badge bg-primary">{{ $classe->especes->count() }}</span></td>
                                            <td>{{ $classe->created_at }}</td>
                                            <td>{{ $classe->updated_at }}</td>
                                            <td class="text-center">
@@ -158,24 +158,24 @@
             })
 
             swalWithBootstrapButtons.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'ATTENTION SUPPRESSION',
+                text: "Etes vous sur de vouloir supprimer ?",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
+                confirmButtonText: 'Oui, supprimer',
+                cancelButtonText: 'Non, annuler !',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
-                   // event.preventDefault();
+                    // event.preventDefault();
                     document.getElementById('delete-form-'+id).submit();
                 } else if (
                     // Read more about handling dismissals
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
                     swalWithBootstrapButtons.fire(
-                        'Cancelled',
-                        'Your data is safe :)',
+                        'ANNULATION',
+                        'Données sauvegardées  :)',
                         'error'
                     )
                 }

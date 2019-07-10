@@ -28,19 +28,19 @@
                             <div class="error" id="err-timedout">The connection to the server timed out!</div>
                             <div class="error" id="err-state"></div>
                         </div>
-                        <button id="send" class="btn f-right">Send Message <i class="icon-ok"></i></button>
+                        <button id="send" class="btn f-right">Envoyé le message <i class="icon-ok"></i></button>
                     </form>
                 </div>
             </div>
             <div class="span3 offset3">
-                <h3>Address</h3>
-                81 Sunnyvale Street<br>
-                Los Angeles, CA 90185<br>
-                United States<br>
+                <h3>Adresse</h3>
+                81 rue Sunnyvale<br>
+                Roubaix, 59100<br>
+                France<br>
                 <br>
-                <i class="icon-phone"></i>+01 880 555 999<br>
-                <i class="icon-envelope"></i><a href="mailto:support@example.com">support@example.com</a><br>
-                <i class="icon-home"></i><a href="#">www.example.com</a>
+                <i class="icon-phone"></i>+33 880 555 999<br>
+                <i class="icon-envelope"></i><a href="mailto:support@example.com">support@zoe.com</a><br>
+
 
                 <div class="row space40"></div>
 
@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="span6 right">
-                &copy; 2020. All rights reserved.
+                &copy; 2020. Tous droits rexervés.
             </div>
         </div>
 

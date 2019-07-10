@@ -45,7 +45,7 @@
                                     <b>Nom de l'espèce</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="name" name="name" class="form-control">
+                                    <input type="text" id="name" name="name" class="form-control" {{ old('name') }}>
                                     <label class="form-label">Nom de l'espèce</label>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                 <p>
                                     <b>Règne</b>
                                 </p>
-                                <select class="form-control show-tick" name="regne" id="regne">
+                                <select class="form-control show-tick" name="regne" id="regne" {{ old('regne') }}>
                                     <option value="animal">Animal</option>
                                     <option value="vegetal">Végétal</option>
                                 </select>

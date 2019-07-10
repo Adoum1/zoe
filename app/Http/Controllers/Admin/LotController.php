@@ -50,14 +50,23 @@ class LotController extends Controller
          */
 
         $this->validate($request, [
-            'libelle' => 'required',
+            'libelle' => 'required|unique:lots',
             'type'    => 'required',
             'numCasier' => 'required',
             'salle'     => 'required',
           //  'quantite'  => 'required',
             'entree'    => 'required',
             'sortie'    => 'required',
+        ],[
+            'libelle.unique' => 'Ce libellé existe déja.',
+            'libelle.required' => 'Le libellé est obligatoire.',
+            'type.required' => 'Le type est obligatoire.',
+            'numCasier.required' => 'La numéro du casier est obligatoire.',
+            'entree.required' => 'La QTE entrée est obligatoire.',
+            'sortie.required' => 'La QTE sortie est obligatoire.',
+
         ]);
+
 
 
 
@@ -89,7 +98,7 @@ class LotController extends Controller
 
 
 
-            Toastr::success('Lot créé :)', 'Success');
+            Toastr::success('Lot créé :)', 'GESTION DE LA TAXINOMIE');
 
             return redirect()->route('admin.lot.index');
         }
@@ -145,7 +154,16 @@ class LotController extends Controller
          //   'quantite'  => 'required',
             'entree'    => 'required',
             'sortie'    => 'required',
+        ],[
+           // 'libelle.unique' => 'Ce libellé existe déja.',
+            'libelle.required' => 'Le libellé est obligatoire.',
+            'type.required' => 'Le type est obligatoire.',
+            'numCasier.required' => 'La numéro du casier est obligatoire.',
+            'entree.required' => 'La QTE entrée est obligatoire.',
+            'sortie.required' => 'La QTE sortie est obligatoire.',
+
         ]);
+
 
 
 
@@ -174,7 +192,7 @@ class LotController extends Controller
             $lot->sites()->sync($request->sites);
 
 
-            Toastr::success('Lot MAJ :)', 'Success');
+            Toastr::success('Lot mise à jour :)', 'GESTION DE LA TAXINOMIE');
 
             return redirect()->route('admin.lot.index');
         }
@@ -195,7 +213,7 @@ class LotController extends Controller
 
         $lot->delete();
 
-        Toastr::success('Lot supprimé', 'Suppresion');
+        Toastr::success('Lot supprimé', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->back();
     }

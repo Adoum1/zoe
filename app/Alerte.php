@@ -21,5 +21,12 @@ class Alerte extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function candidatures(){
+        return $this->belongsToMany('App\Candidature')->withTimestamps();
+    }
+
 
 }

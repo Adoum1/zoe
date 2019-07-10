@@ -52,7 +52,7 @@
                                     <b>Libellé de l'alerte</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="title" name="title" class="form-control">
+                                    <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
                                     <label class="form-label">libellé de l'alerte</label>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                 <p>
                                     <b>Description</b>
                                 </p>
-                                <textarea name="body" id="tinymce" cols="30" rows="10"></textarea>
+                                <textarea name="body" id="tinymce" cols="30" rows="10"> {!! old('body') !!} </textarea>
                             </div>
 
                         </div>

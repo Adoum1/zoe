@@ -95,7 +95,7 @@ class EspeceController extends Controller
          */
 
        $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|unique:especes',
           //  'image' => 'required',
             'classes' => 'required',
             'embranchements' => 'required',
@@ -103,7 +103,16 @@ class EspeceController extends Controller
             'genres' => 'required',
             'ordres' => 'required',
             'description' => 'required',
-        ]);
+        ],[
+           'name.unique' => 'Cette espèce existe déja.',
+           'name.required' => 'Le nom de l espèce est obligatoire.',
+           'embranchements.required' => 'L embranchement est obligatoire.',
+           'familles.required' => 'La famille est obligatoire.',
+           'genres.required' => 'Le genres est obligatoire.',
+           'ordres.required' => 'L ordre est obligatoire.',
+           'description.required' => 'La description est obligatoire.',
+       ]);
+
 
         /**
          * Setp up Image
@@ -152,7 +161,7 @@ class EspeceController extends Controller
         $espece->genres()->attach($request->genres);
 
 
-        Toastr::success('Espèce créé :)', 'Success');
+        Toastr::success('Espèce créée :)', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.espece.index');
     }
@@ -200,14 +209,21 @@ class EspeceController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
+            //  'image' => 'required',
             'classes' => 'required',
             'embranchements' => 'required',
-            'image' => 'image',
             'familles' => 'required',
             'genres' => 'required',
-            'regne' => 'required',
             'ordres' => 'required',
             'description' => 'required',
+        ],[
+           // 'name.unique' => 'Cette espèce existe déja.',
+            'name.required' => 'Le nom de l espèce est obligatoire.',
+            'embranchements.required' => 'L embranchement est obligatoire.',
+            'familles.required' => 'La famille est obligatoire.',
+            'genres.required' => 'Le genres est obligatoire.',
+            'ordres.required' => 'L ordre est obligatoire.',
+            'description.required' => 'La description est obligatoire.',
         ]);
 
         /**
@@ -263,7 +279,7 @@ class EspeceController extends Controller
         $espece->genres()->sync($request->genres);
 
 
-        Toastr::success('Espèce MAJ :)', 'Success');
+        Toastr::success('Espèce mise à jour :)', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->route('admin.espece.index');
     }
@@ -287,7 +303,7 @@ class EspeceController extends Controller
         $espece->genres()->detach();
         $espece->delete();
 
-        Toastr::success('espece supprimé !!', 'Success');
+        Toastr::success('espece supprimée !!', 'GESTION DE LA TAXINOMIE');
 
         return redirect()->back();
     }

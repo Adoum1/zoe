@@ -40,11 +40,19 @@ class SiteController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nom' => 'required',
+            'nom' => 'required|unique:sites',
             'rue' => 'required',
             'cp'  => 'required',
             'commune' => 'required',
             'pays'    => 'required',
+        ],[
+            'nom.unique' => 'Ce site existe déja.',
+            'nom.required' => 'Le nom du site est obligatoire.',
+            'rue.required' => 'La rue est obligatoire.',
+            'cp.required' => 'Le code postal est obligatoire.',
+            'commune.required' => 'La commune est obligatoire.',
+            'pays.required' => 'Le pays est obligatoire.',
+
         ]);
 
         $site = new Site();
@@ -57,7 +65,7 @@ class SiteController extends Controller
 
         $site->save();
 
-        Toastr::success('Site ajouté.', 'Success');
+        Toastr::success('Site ajouté.', 'GESTION DES SITES DE STOCKAGE');
 
         return redirect()->route('admin.site.index');
     }
@@ -101,6 +109,14 @@ class SiteController extends Controller
             'cp'  => 'required',
             'commune' => 'required',
             'pays'    => 'required',
+        ],[
+
+            'nom.required' => 'Le nom du site est obligatoire.',
+            'rue.required' => 'La rue est obligatoire.',
+            'cp.required' => 'Le code postal est obligatoire.',
+            'commune.required' => 'La commune est obligatoire.',
+            'pays.required' => 'Le pays est obligatoire.',
+
         ]);
 
         $site = Site::find($id);
@@ -113,7 +129,7 @@ class SiteController extends Controller
 
         $site->save();
 
-        Toastr::success('Les informations du site ont été mises à jour avec succès.', 'MISE A JOUR');
+        Toastr::success('Les informations du site ont été mises à jour avec succès.', 'GESTION DES SITES DE STOCKAGES');
 
         return redirect()->route('admin.site.index');
 
@@ -129,7 +145,7 @@ class SiteController extends Controller
     {
         Site::find($id)->delete();
 
-        Toastr::success('Le site a été suprimé', 'SUPPRESSION SITE');
+        Toastr::success('Le site a été suprimé', 'GESTION DES SITES DE STOCKAGE');
 
         return redirect()->back();
     }

@@ -45,7 +45,7 @@
                                     <b>Libellé du lot</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="libelle" name="libelle" class="form-control" value="">
+                                    <input type="text" id="libelle" name="libelle" class="form-control" value="{{ old('libelle') }}">
                                     <label class="form-label">Libellé du lot</label>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                     <b>Type</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="type" name="type" class="form-control">
+                                    <input type="text" id="type" name="type" class="form-control"  value="{{ old('type') }}">
                                     <label class="form-label">Type</label>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                     <b>Entrée</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="entree" name="entree" class="form-control">
+                                    <input type="text" id="entree" name="entree" class="form-control" value="{{ old('entree') }}">
                                     <label class="form-label">Entrée</label>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                                     <b>Sortie</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="sortie" name="sortie" class="form-control">
+                                    <input type="text" id="sortie" name="sortie" class="form-control" value="{{ old('sortie') }}">
                                     <label class="form-label">Sortie</label>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                                     <b>Numéro Casier</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="numCasier" name="numCasier" class="form-control">
+                                    <input type="text" id="numCasier" name="numCasier" class="form-control" value="{{ old('numCasier') }}">
                                     <label class="form-label">Numéro Casier</label>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                                     <b>Salle</b>
                                 </p>
                                 <div class="form-line">
-                                    <input type="text" id="salle" name="salle" class="form-control">
+                                    <input type="text" id="salle" name="salle" class="form-control" value="{{ old('salle') }}">
                                     <label class="form-label">Salle</label>
                                 </div>
                             </div>

@@ -99,12 +99,45 @@
                                         {!! $alerte->body !!}
                                     </p>
                                     <div class="blue-dark">
-                                        <i class="icon-user"></i> By {{ $alerte->user->nom }} <i class="icon-tag"></i> Photography | Portrait <i class="icon-comment-alt"></i> With 12 Comments
+                                        <i class="icon-user"></i> By {{ $alerte->user->nom }}  | <i class="icon-comment-alt"></i>  12
                                     </div>
 
                                 </div>
 
                             </div>
+
+
+
+                                <h3>Candidater</h3>
+                                <div>
+                                    <form method="POST" action="{{ route('candidature.store') }}" class="form-main">
+                                        @csrf
+
+                                        <input name="name" id="name" type="text" placeholder="Entrer votre nom">
+
+
+                                        <input  name="email" id="email" type="text" placeholder="Entrer votre email">
+
+                                        <input name="alerte" id="alerte" type="text" value="{{ $alerte->title }}">
+
+                                        <textarea  name="body" id="message" placeholder="Saisissez votre candidature"></textarea><br>
+
+                                            <div class="form-row align-items-center">
+                                                <div class="col-auto my-1">
+                                                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                                                    <select name="participation" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                        <option selected>Participer :</option>
+                                                        <option value="Physiquement">Physiquement</option>
+                                                        <option value="Physiquement">Financièrement</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                        <button type="submit" class="btn f-right" >Envoyer la candidature<i class="icon-ok"></i></button>
+                                    </form>
+                                </div>
+
                         </div>
                     </div>
                     <!-- Blog Item End -->
@@ -127,69 +160,7 @@
 <!-- Content End -->
 
 <!-- Footer -->
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="span5">
-                <h3>Contact Form</h3>
-                <div>
-                    <form class="form-main" name="ajax-form" id="ajax-form" action="#" method="post">
-                        <div id="ajaxsuccess">E-mail was successfully sent.</div>
-                        <div class="error" id="err-name">Please enter name</div>
-                        <input name="name" id="name" type="text" value="Name" onfocus="if(this.value == 'Name') this.value='';" onblur="if(this.value == '') this.value='Name';">
-
-                        <div class="error" id="err-email">Please enter e-mail</div>
-                        <div class="error" id="err-emailvld">E-mail is not a valid format</div>
-                        <input  name="email" id="email" type="text" value="E-mail" onfocus="if(this.value == 'E-mail') this.value='';" onblur="if(this.value == '') this.value='E-mail';">
-
-                        <div class="error" id="err-message">Please enter message</div>
-                        <textarea  name="message" id="message" onfocus="if(this.value == 'Message') this.value='';" onblur="if(this.value == '') this.value='Message';">Message</textarea><br>
-                        <div>
-                            <div class="error" id="err-form">There was a problem validating the form please check!</div>
-                            <div class="error" id="err-timedout">The connection to the server timed out!</div>
-                            <div class="error" id="err-state"></div>
-                        </div>
-                        <button id="send" class="btn f-right">Send Message <i class="icon-ok"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="span3 offset3">
-                <h3>Address</h3>
-                81 Sunnyvale Street<br>
-                Los Angeles, CA 90185<br>
-                United States<br>
-                <br>
-                <i class="icon-phone"></i>+01 880 555 999<br>
-                <i class="icon-envelope"></i><a href="mailto:support@example.com">support@example.com</a><br>
-                <i class="icon-home"></i><a href="#">www.example.com</a>
-
-                <div class="row space40"></div>
-
-                <a href="#" class="social-network sn2 behance"></a>
-                <a href="#" class="social-network sn2 facebook"></a>
-                <a href="#" class="social-network sn2 pinterest"></a>
-                <a href="#" class="social-network sn2 flickr"></a>
-                <a href="#" class="social-network sn2 dribbble"></a>
-                <a href="#" class="social-network sn2 lastfm"></a>
-                <a href="#" class="social-network sn2 forrst"></a>
-                <a href="#" class="social-network sn2 xing"></a>
-            </div>
-        </div>
-
-        <div class="row space50"></div>
-        <div class="row">
-            <div class="span6">
-                <div class="logo-footer">
-                    Design by <a href="https://www.freshdesignweb.com">freshDesignweb</a>
-                </div>
-            </div>
-            <div class="span6 right">
-                &copy; 2020. All rights reserved.
-            </div>
-        </div>
-
-    </div>
-</footer>
+@include('layouts.front.partial.footer')
 <!-- Footer End -->
 
 <!-- JavaScripts -->
@@ -197,6 +168,21 @@
 <script type="text/javascript" src="{{ asset('assets/front/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/front/js/functions.js') }}"></script>
 <script type="text/javascript" defer src="{{ asset('assets/front/js/jquery.flexslider.js') }}"></script>
+
+<script>
+    @if($errors->any())
+
+    @forEach($errors->all() as $error)
+
+    toastr.error('{{ $error }}', 'Error', {
+        closeButton:true,
+        progressBar:true,
+    });
+
+    @endforeach
+    @endif
+</script>
+
 
 </body>
 </html>

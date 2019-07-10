@@ -36,6 +36,9 @@ Route::get('/alerte/{slug}', 'InternauteController@getAlerteOne', function () {
     return view('alerte');
 })->name('alerte');
 
+/** Route candidature */
+Route::post('candidature', 'CandidatureController@store')->name('candidature.store');
+
 //Route::get('/', 'HomeController@index')->name('welcome');
 
 Auth::routes();
